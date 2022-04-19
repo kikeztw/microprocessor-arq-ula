@@ -10,6 +10,7 @@ sc_event do_store_ev;
 static bool stop = true;
 
 DataPath::DataPath(sc_module_name name) : sc_module(name) {
+
   SC_THREAD(IF);
   sensitive << clkIn.pos();
   // dont_initialize();

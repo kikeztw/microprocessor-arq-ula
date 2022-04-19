@@ -14,7 +14,6 @@
 class DataPath : public sc_module {
 public:
   sc_in<bool> clkIn;
-
   SC_CTOR(DataPath);
 
   ~DataPath(); // Destructor
