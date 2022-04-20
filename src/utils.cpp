@@ -1,5 +1,18 @@
 #include "utils.h"
 
+// sobrecarga de funcion para funcionar sc_in<string>
+std::ostream &operator<<(std::ostream &os, const string &trans) {
+  os << trans.get();
+  return os;
+}
+// end
+// trace function, only required if actually used
+void sc_trace(sc_trace_file *&tf, const string &trans, std::string nm) {
+  sc_trace(tf, trans, nm + ".str");
+} // end trace
+
+// ------------------------------------------------------ end sobrecarga
+
 static bool _text = false;
 static bool _data = false;
 void read(const std::string &path, std::vector<std::string> *L1I,
