@@ -16,7 +16,7 @@ void InstructioMemory::read() {
   } catch (std::out_of_range const &exc) {
     a.set("");
     this->block.write(a);
-    std::cout << exc.what() << '\n';
+    // std::cout << exc.what() << '\n';
     return;
   }
 

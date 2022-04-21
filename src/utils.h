@@ -10,9 +10,9 @@
 #include <vector>
 
 class string { // previously as struct
-  std::string str;
 
 public:
+  std::string str;
   void set(std::string tmp) { str = tmp; }
   std::string get() const { return this->str; }
   // Required by sc_signal<> and sc_fifo<>
@@ -26,7 +26,7 @@ public:
   friend void sc_trace(sc_trace_file *&tf, const string &trans, std::string nm);
 };
 
-void read(const std::string &path, std::vector<std::string> *L1I,
-          std::vector<int> *L1D, std::map<std::string, int> *dic,
-          std::map<std::string, int> *dicB);
+// void read(const std::string &path, std::vector<std::string> *L1I,
+//           std::vector<int> *L1D, std::map<std::string, int> *dic,
+//           std::map<std::string, int> *dicB);
 #endif // !UTILS_H

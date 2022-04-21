@@ -35,17 +35,20 @@ public:
   sc_signal<sc_uint<32>> SgInPC;
   sc_signal<sc_uint<32>> SgOutPC;
 
+  // cables registros Encauzamiento
+  sc_signal<sc_uint<32>> Sg_cpOutre;
+  sc_signal<string> Sg_stringDOutre;
   Adder adder;
   InstructioMemory im;
   PC pc;
   RegisterIFID re;
 
 private:
-  void IF();
-  void ID();
-  void EX();
-  void MEM();
-  void WB();
+  // void IF();
+  // void ID();
+  // void EX();
+  // void MEM();
+  // void WB();
 };
 
 #endif // !camino

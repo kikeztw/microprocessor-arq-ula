@@ -1,5 +1,5 @@
 #include "camino.h"
-#include "Adder.h"
+#include "instruction_memory.h"
 #include <sysc/kernel/sc_module_name.h>
 #include <sysc/kernel/sc_simcontext.h>
 sc_event do_decode_ev;
@@ -11,7 +11,7 @@ sc_event do_store_ev;
 // static bool stop = true;
 
 DataPath::DataPath(sc_module_name name)
-    : sc_module(name), adder("adder"), im("im"), pc("pc"), re("re") {
+    : sc_module(name), adder("sumador"), im("im_"), pc("pc"), re("re_") {
 
   pc.clkIn(clkIn);
   pc.addressPC(SgOutadd);
@@ -25,6 +25,9 @@ DataPath::DataPath(sc_module_name name)
 
   re.cpIn(SgOutPC);
   re.insIn(SgOutim);
+  re.clkIn(clkIn);
+  re.cpOut(Sg_cpOutre);
+  re.insOut(Sg_stringDOutre);
 
   // SC_THREAD(IF);
   // sensitive << clkIn.pos();
