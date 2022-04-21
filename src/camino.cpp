@@ -13,8 +13,9 @@ sc_event do_store_ev;
 DataPath::DataPath(sc_module_name name)
     : sc_module(name), adder("sumador"), im("im_"), pc("pc"), re("re_") {
 
+  // sc_stop();
   pc.clkIn(clkIn);
-  pc.addressPC(SgOutadd);
+  pc.addressPC(SgInPC);
   pc.addressBlock(SgOutPC);
 
   adder.sIn(SgOutPC);

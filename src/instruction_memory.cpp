@@ -1,6 +1,7 @@
 #include "instruction_memory.h"
 
 InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
+  L1_I.push_back("instruccion1 A B C");
   SC_METHOD(read);
   sensitive << address;
 }
@@ -45,6 +46,7 @@ void InstructioMemory::read() {
     }
   }
 
+  // std::cout << block;
   a.set(block);
   this->block->write(a);
 }

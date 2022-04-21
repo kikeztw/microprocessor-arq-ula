@@ -32,12 +32,12 @@ public:
 
   // cables pc
   sc_signal<bool> clk;
-  sc_signal<sc_uint<32>> SgInPC;
+  sc_in<sc_uint<32>> SgInPC;
   sc_signal<sc_uint<32>> SgOutPC;
 
   // cables registros Encauzamiento
-  sc_signal<sc_uint<32>> Sg_cpOutre;
-  sc_signal<string> Sg_stringDOutre;
+  sc_out<sc_uint<32>> Sg_cpOutre;
+  sc_out<string> Sg_stringDOutre;
   Adder adder;
   InstructioMemory im;
   PC pc;
