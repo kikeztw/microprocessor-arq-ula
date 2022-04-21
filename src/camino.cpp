@@ -1,4 +1,5 @@
 #include "camino.h"
+#include "Adder.h"
 #include <sysc/kernel/sc_module_name.h>
 #include <sysc/kernel/sc_simcontext.h>
 sc_event do_decode_ev;
@@ -9,7 +10,18 @@ sc_event do_store_ev;
 
 static bool stop = true;
 
-DataPath::DataPath(sc_module_name name) : sc_module(name) {
+DataPath::DataPath(sc_module_name name)
+    : sc_module(name), adder("sum"), im("im"), pc("pc") {
+
+  pc.clkIn(clkIn);
+  pc.addressPC(SgOutadd);
+  pc.addressBlock(SgOutPC);
+
+  adder.sIn(SgOutPC);
+  adder.sOut(SgOutadd);
+
+  im.address(SgOutPC);
+  im.block(SgOutim);
 
   SC_THREAD(IF);
   sensitive << clkIn.pos();
@@ -32,6 +44,7 @@ DataPath::~DataPath() {}
 void DataPath::IF() {
   while (1) {
     wait();
+
     // std::cout << clkIn->read() << std::endl;
     // std::cout << clkIn->read() << std::endl;
     // operaciones

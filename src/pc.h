@@ -12,6 +12,7 @@ class PC : sc_module {
 public:
   // sc_in<bool> clkIn;
   // direccion de memoria a bloque que contine dato a ejecutar
+  sc_in<bool> clkIn;
   sc_in<sc_uint<32>> addressPC;
 
   SC_CTOR(PC);

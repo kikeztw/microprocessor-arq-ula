@@ -4,7 +4,7 @@
 
 PC::PC(sc_module_name name) : sc_module(name) {
   SC_METHOD(op);
-  sensitive << addressPC;
+  sensitive << clkIn;
 }
 
 // no estoy seguro , si aca es asi , no se si sera con sincronizacion de reloj
