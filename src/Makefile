@@ -34,27 +34,31 @@
 
 CC  = g++
 X64 = 
-SYSTEMC_HOME_BY_VERSION = /usr/local/$(VERSION)-install
+SYSTEMC_HOME_BY_VERSION = /usr/local/$(VERSION)
 
 ifeq ($(shell uname -m), x86_64)
 	X64 = 64
 endif
 
+ifeq ($(VERSION),systemc-2.3.1)
+	CC = g++ -std=c++98
+endif
 ifeq ($(VERSION),systemc-2.3.3)
 	CC = g++ -std=c++17
 endif
 
-INCDIR  = -I. -I.. -I$(SYSTEMC_HOME_BY_VERSION)/include
+INCDIR  = -I. -I.. -I../gates -I$(SYSTEMC_HOME_BY_VERSION)/include
 LIBDIR  = -L. -L.. -L$(SYSTEMC_HOME_BY_VERSION)/lib#-linux$(X64)
 LIBS    = -lm -lsystemc
 
 CFLAGS  = -g -Wno-deprecated -Wall
 OBJS   = $(SRCS:.cpp=.o)
+NOTDIR_OBJS = $(notdir $(OBJS))
 
 .SUFFIXES: .cpp .o
 
 $(TARGET): $(OBJS) $(SRCH)
-	$(CC) $(CFLAGS) $(INCDIR) $(LIBDIR) -o $@ $(OBJS) $(LIBS) 2>&1 | c++filt
+	$(CC) $(CFLAGS) $(INCDIR) $(LIBDIR) -o $@ $(NOTDIR_OBJS) $(LIBS) 2>&1 | c++filt
 
 all: $(TARGET)
 
@@ -62,7 +66,7 @@ all: $(TARGET)
 	$(CC) $(CFLAGS) $(INCDIR) -c $<
 
 clean:
-	rm -f $(OBJS) *~ $(TARGET) *.bak $(TARGET).stackdump *.vcd
+	rm -f $(NOTDIR_OBJS) *~ $(TARGET) *.bak $(TARGET).stackdump *.vcd
 
 run:
 	./$(TARGET)
