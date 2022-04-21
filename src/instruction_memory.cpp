@@ -2,6 +2,7 @@
 
 InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
   L1_I.push_back("instruccion1 A B C");
+  L1_I.push_back("instruccion2 A B C");
   SC_METHOD(read);
   sensitive << address;
 }
