@@ -1,10 +1,8 @@
 #include "Adder.h"
 
-Adder::Adder(sc_module_name nm): sc_module(nm){
+Adder::Adder(sc_module_name nm) : sc_module(nm) {
   SC_METHOD(operation);
-  sensitive<< sIn;
+  sensitive << sIn;
 }
 
-void Adder::operation(){
-  sOut.write(sIn.read() + 1);
-}
+void Adder::operation() { sOut.write(sIn.read() + 1); }

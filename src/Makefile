@@ -4,7 +4,7 @@
 # Versión de SYSTEMC
 	VERSION = systemc-2.3.3
 # Especifique los archivos .cpp
-	SRCS = main.cpp  camino.cpp
+	SRCS = *.cpp
 # Nombre del ejecutable
 	TARGET = test
 #

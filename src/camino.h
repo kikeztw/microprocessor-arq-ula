@@ -4,6 +4,7 @@
 #include "Adder.h"
 #include "instruction_memory.h"
 #include "pc.h"
+#include "register_if_id.h"
 #include "utils.h"
 #include <sysc/communication/sc_clock.h>
 #include <systemc.h>
@@ -20,9 +21,6 @@ public:
   SC_CTOR(DataPath);
 
   ~DataPath(); // Destructor
-  Adder adder;
-  InstructioMemory im;
-  PC pc;
 
   // cables sumador
   sc_signal<sc_uint<32>> SgInadd;
@@ -36,6 +34,11 @@ public:
   sc_signal<bool> clk;
   sc_signal<sc_uint<32>> SgInPC;
   sc_signal<sc_uint<32>> SgOutPC;
+
+  Adder adder;
+  InstructioMemory im;
+  PC pc;
+  RegisterIFID re;
 
 private:
   void IF();
