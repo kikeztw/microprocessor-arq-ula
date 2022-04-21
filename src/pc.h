@@ -25,7 +25,8 @@ public:
 
 private:
   sc_uint<32> address;
-  void op();
+  void read();
+  void write();
 };
 
 #endif // !PC_H
