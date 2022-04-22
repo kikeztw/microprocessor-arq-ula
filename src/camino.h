@@ -6,7 +6,6 @@
 #include "pc.h"
 #include "register_if_id.h"
 #include "utils.h"
-#include <sysc/communication/sc_clock.h>
 #include <systemc.h>
 /**
  * @class DataPath
@@ -22,33 +21,27 @@ public:
 
   ~DataPath(); // Destructor
 
-  // cables sumador
-  sc_signal<sc_uint<32>> SgInadd;
-  sc_signal<sc_uint<32>> SgOutadd;
+  // // cables sumador
+   sc_signal<sc_uint<32>> SgInadd;
+   sc_signal<sc_uint<32>> SgOutadd;
 
-  // cables IM
-  sc_signal<sc_uint<32>> SgInim;
-  sc_signal<string> SgOutim;
+  // // cables IM
+   sc_signal<sc_uint<32>> SgInim;
+   sc_signal<string> SgOutim;
 
-  // cables pc
-  sc_signal<bool> clk;
-  sc_in<sc_uint<32>> SgInPC;
-  sc_signal<sc_uint<32>> SgOutPC;
+  // // cables pc
+   sc_signal<sc_uint<32>> SgInPC;
+   sc_signal<sc_uint<32>> SgOutPC;
 
-  // cables registros Encauzamiento
-  sc_out<sc_uint<32>> Sg_cpOutre;
-  sc_out<string> Sg_stringDOutre;
-  Adder adder;
-  InstructioMemory im;
-  PC pc;
-  RegisterIFID re;
+  // // cables registros Encauzamiento
+   sc_signal<sc_uint<32>> Sg_cpOutre;
+   sc_signal<string> Sg_stringDOutre;
 
-private:
-  // void IF();
-  // void ID();
-  // void EX();
-  // void MEM();
-  // void WB();
+   Adder adder;
+   InstructioMemory im;
+   PC pc;
+   RegisterIFID re;
+
 };
 
 #endif // !camino
