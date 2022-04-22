@@ -19,9 +19,9 @@ int sc_main(int argc, char **argv)
   sc_signal<string> Sg_stringDInre;
 
   cam.clkIn(clock);
-  cam.SgInPC(SgOutPC);
-  cam.Sg_cpOutre(Sg_cpIntre);
-  cam.Sg_stringDOutre(Sg_stringDInre);
+  // cam.SgInPC(SgOutPC);
+  // cam.Sg_cpOutre(Sg_cpIntre);
+  // cam.Sg_stringDOutre(Sg_stringDInre);
 
   // test.SgOutPC(SgOutPC);
   // test.Sg_cpIntre(Sg_cpIntre);

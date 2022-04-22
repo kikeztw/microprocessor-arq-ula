@@ -9,6 +9,7 @@ InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm)
 
   SC_METHOD(read);
   sensitive << address;
+  // dont_initialize();
 }
 void InstructioMemory::read()
 {
@@ -16,16 +17,12 @@ void InstructioMemory::read()
   auto addres = address.read();
   std::string block;
 
-  std::cout << addres << ";" << L1_I.size() << std::endl;
-
   if (addres >= 4)
     sc_stop();
 
   // busca el bloque si no esta, no devuelve nada
   try {
     block = L1_I.at(addres);
-    std::cout << sc_time_stamp() << "  instrucction memory read: " << block
-              << "\n";
 
   } catch (std::out_of_range const &exc) {
     a.set("");
@@ -42,7 +39,6 @@ void InstructioMemory::read()
     if (n != std::string::npos) {
       block.replace(block.begin() + n, block.end(),
                     std::to_string(pair.second));
-      std::cout << "found: " << block << '\n';
     }
   }
 
@@ -54,7 +50,6 @@ void InstructioMemory::read()
       if (n != std::string::npos) {
         block.replace(block.begin() + n, block.end(),
                       std::to_string(pair.second));
-        // std::cout << "found: " << block << '\n';
       }
     }
   }

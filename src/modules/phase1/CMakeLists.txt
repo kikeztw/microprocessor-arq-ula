@@ -7,3 +7,4 @@ set(
 )
 
 add_library(A_MODULES_PHASE_ONE STATIC ${SRC_MODULES_PHASE_1})
+target_link_libraries(A_MODULES_PHASE_ONE A_UTILITY_FILES)

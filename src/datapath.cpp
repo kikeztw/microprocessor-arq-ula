@@ -11,26 +11,12 @@ sc_event do_store_ev;
 
 // static bool stop = true;
 
-DataPath::DataPath(sc_module_name name)
-    : sc_module(name), adder("sumador"), im("im_"), pc("pc"), re("re_")
+DataPath::DataPath(sc_module_name name) : sc_module(name), inf("inf")
 {
   // sc_stop();
 
-  pc.clkIn(clkIn);
-  pc.addressPC(SgOutadd);
-  pc.addressBlock(SgOutPC);
-
-  adder.sIn(SgOutPC);
-  adder.sOut(SgOutadd);
-
-  im.address(SgOutPC);
-  im.block(SgOutim);
-
-  re.cpIn(SgOutPC);
-  re.insIn(SgOutim);
-  re.clkIn(clkIn);
-  re.cpOut(Sg_cpOutre);
-  re.insOut(Sg_stringDOutre);
+  inf.clkIn(clkIn);
+  // clkIn(clk);
 
   // SC_THREAD(IF);
   // sensitive << clkIn.pos();
@@ -52,17 +38,17 @@ DataPath::~DataPath()
 {
 }
 
-// void DataPath::IF() {
-//   while (1) {
-//     wait();
-
-//     // std::cout << clkIn->read() << std::endl;
-//     // std::cout << clkIn->read() << std::endl;
-//     // operaciones
-//     std::cout << " en IF" << std::endl;
-//     do_decode_ev.notify(SC_ZERO_TIME);
-//   }
-// }
+void DataPath::IF()
+{
+  while (1) {
+    wait();
+    // std::cout << clkIn->read() << std::endl;
+    // std::cout << clkIn->read() << std::endl;
+    // operaciones
+    std::cout << " en IF" << std::endl;
+    do_decode_ev.notify(SC_ZERO_TIME);
+  }
+}
 
 // void DataPath::ID() {
 //   while (1) {
