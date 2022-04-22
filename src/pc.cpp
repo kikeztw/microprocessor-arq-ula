@@ -20,12 +20,9 @@ PC::PC(sc_module_name name) : sc_module(name) {
 // como en la celda , si clkIn es 0 escribe y 1 lee
 void PC::read() {
   addressBlock.write(address);
-  std::cout  << sc_time_stamp()<< " pc read: " << address << "\n";
 }
 
 void PC::write()
 {
   address = addressPC.read();
-  std::cout  << sc_time_stamp()<< " pc write: " << addressPC.read() << " \n";
-
 }

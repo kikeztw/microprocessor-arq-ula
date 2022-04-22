@@ -7,6 +7,7 @@
 #include "register_if_id.h"
 #include "utils.h"
 #include <systemc.h>
+#include <iomanip>
 /**
  * @class DataPath
  * @brief Clase que encapsula los modulos para lograr el DataPath de datos
@@ -41,6 +42,11 @@ public:
    InstructioMemory im;
    PC pc;
    RegisterIFID re;
+
+   private:
+
+   void log();
+   void test();
 
 };
 

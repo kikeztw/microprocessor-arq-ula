@@ -20,11 +20,9 @@ void RegisterIFID::read() {
   s.set(insSt);
   cpOut.write(cpSt);
   insOut.write(s);
-  std::cout  << sc_time_stamp()<< " regsiter IFID read: (pc:" << cpSt  << ", instr: " << insSt  << ") \n";
 }
 
 void RegisterIFID::write() {
   insSt = insIn.read().str;
   cpSt = cpIn.read();
-  std::cout  << sc_time_stamp()<< " register IFID write:(pc:" << cpSt  << ", instr: " << insSt   <<") \n";
 }

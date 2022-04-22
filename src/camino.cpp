@@ -21,6 +21,44 @@ DataPath::DataPath(sc_module_name name)
    re.cpOut(Sg_cpOutre);
    re.insOut(Sg_stringDOutre);
 
+  SC_METHOD(test);
+    sensitive << clkIn;
+  //dont_initialize();
+
+
 }
+
+void DataPath::log()
+{
+  std::cout << std::endl << std::setw(6) << sc_time_stamp();
+  std::cout << std::setw(3) << "";
+  std::cout << std::setw(3) << clkIn.read();
+  std::cout << std::setw(3) << "";
+  std::cout << std::setw(32);
+}
+
+
+void DataPath::test()
+{
+  if(clkIn.read() == 1)
+  {
+    std::cout << "\n============IF============";
+    log();
+    std::cout << "PC out: " << SgOutPC.read();
+    log();
+    std::cout << "adder in: " << SgOutPC.read()  << ", out:" << SgOutadd.read();
+    log();
+    std::cout << "IM in: " << SgOutPC.read() << ", out:" << SgOutim.read();
+  }else
+  {
+    std::cout << "\n============IF============";
+    log();
+    std::cout << "PC in: " << SgOutadd.read();  
+    log();
+    std::cout << "IF/ID in: (instr:" << SgOutim.read() << ", pc:" << SgOutPC.read() << ")";
+  }
+
+}
+
 DataPath::~DataPath() {}
 
