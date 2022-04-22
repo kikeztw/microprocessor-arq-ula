@@ -1,9 +1,12 @@
 // #include "Testbench.h"
-#include "camino.h"
-#include <ctime>
 #include <sysc/kernel/sc_externs.h>
 #include <systemc.h>
-int sc_main(int argc, char **argv) {
+
+#include <ctime>
+
+#include "datapath.h"
+int sc_main(int argc, char **argv)
+{
   sc_time period(10, SC_NS);
   sc_time delay(10, SC_NS);
 

@@ -1,8 +1,10 @@
 #include "pc.h"
+
 #include <sysc/kernel/sc_module.h>
 #include <sysc/kernel/sc_module_name.h>
 
-PC::PC(sc_module_name name) : sc_module(name) {
+PC::PC(sc_module_name name) : sc_module(name)
+{
   address = 0;
   // Solo se puede escribir cuando el reloj está en 0 (clkIn.neg() representa 
   // ue el reloj está en 0)
@@ -17,13 +19,15 @@ PC::PC(sc_module_name name) : sc_module(name) {
 
 // no estoy seguro , si aca es asi , no se si sera con sincronizacion de reloj
 // como en la celda , si clkIn es 0 escribe y 1 lee
-void PC::read() {
-  std::cout << "estoy leyendo el pc" << std::endl;
+void PC::read()
+{
+  std::cout << sc_time_stamp() << " pc read: " << address << "\n";
   // std::cout << "en pc";
   addressBlock.write(address);
 }
 
-void PC::write() {
-  std::cout << "estoy leyendo el pc" << std::endl;
+void PC::write()
+{
   address = addressPC.read();
+  std::cout  << sc_time_stamp()<< " pc write: " << addressPC.read() << " \n";
 }

@@ -1,7 +1,8 @@
-#include "camino.h"
-#include "instruction_memory.h"
+#include "datapath.h"
+
 #include <sysc/kernel/sc_module_name.h>
 #include <sysc/kernel/sc_simcontext.h>
+
 sc_event do_decode_ev;
 sc_event do_execute_ev;
 sc_event do_memoryAccess_ev;
@@ -11,11 +12,12 @@ sc_event do_store_ev;
 // static bool stop = true;
 
 DataPath::DataPath(sc_module_name name)
-    : sc_module(name), adder("sumador"), im("im_"), pc("pc"), re("re_") {
-
+    : sc_module(name), adder("sumador"), im("im_"), pc("pc"), re("re_")
+{
   // sc_stop();
+
   pc.clkIn(clkIn);
-  pc.addressPC(SgInPC);
+  pc.addressPC(SgOutadd);
   pc.addressBlock(SgOutPC);
 
   adder.sIn(SgOutPC);
@@ -46,7 +48,9 @@ DataPath::DataPath(sc_module_name name)
   // sensitive << do_writeBack_ev;
   // dont_initialize();
 }
-DataPath::~DataPath() {}
+DataPath::~DataPath()
+{
+}
 
 // void DataPath::IF() {
 //   while (1) {
