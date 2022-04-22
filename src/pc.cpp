@@ -9,6 +9,7 @@ PC::PC(sc_module_name name) : sc_module(name) {
   // Solo se puede escribir cuando el reloj está en 0 (clkIn.neg() representa que el reloj está en 0)
   SC_METHOD(write);
   sensitive << clkIn.neg();
+  
 
   // Solo se puede leer cuando el reloj están en 1 (clkIn.pos() representa que el reloj está en 1)
   SC_METHOD(read);
