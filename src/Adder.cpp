@@ -5,4 +5,7 @@ Adder::Adder(sc_module_name nm) : sc_module(nm) {
   sensitive << sIn;
 }
 
-void Adder::operation() { sOut.write(sIn.read() + 1); }
+void Adder::operation() {
+  std::cout << "estoy en sumador" << std::endl;
+  sOut.write(sIn.read() + 1);
+}

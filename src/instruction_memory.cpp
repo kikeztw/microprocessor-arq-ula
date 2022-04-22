@@ -3,10 +3,15 @@
 InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
   L1_I.push_back("instruccion1 A B C");
   L1_I.push_back("instruccion2 A B C");
+  L1_I.push_back("instruccion3 A B C");
+  L1_I.push_back("instruccion4 A B C");
   SC_METHOD(read);
   sensitive << address;
 }
 void InstructioMemory::read() {
+  std::cout << "estoy en instruction memory" << std::endl;
+
+  std::cout << address.read() << std::endl;
 
   string a;
   auto addres = address.read();
@@ -50,4 +55,7 @@ void InstructioMemory::read() {
   // std::cout << block;
   a.set(block);
   this->block->write(a);
+
+  std::cout << block << std::endl;
+  sc_stop();
 }
