@@ -15,12 +15,12 @@ DataPath::DataPath(sc_module_name name) : sc_module(name), inf("inf")
 {
   // sc_stop();
 
-  inf.clkIn(clkIn);
+  inf.clkIn(SgclkIn);
   // clkIn(clk);
 
-  // SC_THREAD(IF);
-  // sensitive << clkIn.pos();
-  // // dont_initialize();
+  SC_THREAD(IF);
+  sensitive << clkIn;
+  dont_initialize();
   // SC_THREAD(ID);
   // sensitive << do_decode_ev;
   // // dont_initialize();
@@ -42,11 +42,13 @@ void DataPath::IF()
 {
   while (1) {
     wait();
+    SgclkIn = clkIn.read();
     // std::cout << clkIn->read() << std::endl;
     // std::cout << clkIn->read() << std::endl;
     // operaciones
-    std::cout << " en IF" << std::endl;
+    std::cout << "\n en IF" << std::endl;
     do_decode_ev.notify(SC_ZERO_TIME);
+    // wait();
   }
 }
 

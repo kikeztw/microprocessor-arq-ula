@@ -27,6 +27,7 @@ class DataPath : public sc_module
   CIF inf;
 
  private:
+  sc_signal<bool> SgclkIn;
   void IF();
   // void ID();
   // void EX();

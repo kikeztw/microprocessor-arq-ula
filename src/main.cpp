@@ -11,7 +11,7 @@ int sc_main(int argc, char **argv)
   sc_time period(10, SC_NS);
   sc_time delay(10, SC_NS);
   std::string path = "./tests/ejemplo04.asm";
-  sc_clock clock("clock", period, 0.5, delay, true);
+  sc_clock clock("clock", period, 0.5, delay, false);
   DataPath cam("camino");
   // Testbench test("test");
 
