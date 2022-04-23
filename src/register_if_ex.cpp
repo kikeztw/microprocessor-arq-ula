@@ -1,9 +1,11 @@
 #include "register_if_ex.h"
 
-RegisterIFID::RegisterIFID(sc_module_name nm) : sc_module(nm) {
+RegisterIFEX::RegisterIFEX(sc_module_name nm) : sc_module(nm) {
 
-  insSt = "";
+  rRg1Store = "";
+  rRg2InStore = "";
   cpSt = 0;
+  immStore = 0;
   // Solo se puede escribir cuando el reloj está en 0 (clkIn.neg() representa 
   // ue el reloj está en 0)
   SC_METHOD(write);
@@ -16,7 +18,7 @@ RegisterIFID::RegisterIFID(sc_module_name nm) : sc_module(nm) {
   sensitive << clkIn.pos();
 }
 
-void RegisterIFID::read() {
+void RegisterIFEX::read() {
   string tempRRg1In, tempoRRg2In;
 
   tempRRg1In.set(rRg1Store);
@@ -30,7 +32,7 @@ void RegisterIFID::read() {
   immOut.write(immStore);
 }
 
-void RegisterIFID::write() {
+void RegisterIFEX::write() {
   // register 1 and 2
   rRg1Store = rRg1In.read().str;
   rRg2InStore = rRg2In.read().str;
