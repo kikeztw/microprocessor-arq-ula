@@ -1,25 +1,31 @@
 #include "instruction_memory.h"
 
 InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
-  L1_I.push_back("instruccion1 A B C");
-  L1_I.push_back("instruccion2 A B C");
-  L1_I.push_back("instruccion3 A B C");
-  L1_I.push_back("instruccion4 A B C");
+  L1_I.push_back("p0 x1,x2,x3");
+  L1_I.push_back("p1 x1,x2,x3");
+  L1_I.push_back("p2 x1,x2,x3");
+  L1_I.push_back("p3 x1,x2,x3");
+  L1_I.push_back("p4 x1,x2,x3");
+  L1_I.push_back("p5 x1,x2,x3");
+  L1_I.push_back("p6 x1,x2,x3");
+
+
   SC_METHOD(read);
   sensitive << address;
 }
 void InstructioMemory::read() {
-  std::cout << "estoy en instruction memory" << std::endl;
-
-  std::cout << address.read() << std::endl;
 
   string a;
   auto addres = address.read();
   std::string block;
 
+  if(addres >= L1_I.size())
+    sc_stop();
+
   // busca el bloque si no esta, no devuelve nada
   try {
     block = L1_I.at(addres);
+
   } catch (std::out_of_range const &exc) {
     a.set("");
     this->block.write(a);
@@ -35,7 +41,6 @@ void InstructioMemory::read() {
     if (n != std::string::npos) {
       block.replace(block.begin() + n, block.end(),
                     std::to_string(pair.second));
-      // std::cout << "found: " << block << '\n';
     }
   }
 
@@ -52,10 +57,7 @@ void InstructioMemory::read() {
     }
   }
 
-  // std::cout << block;
   a.set(block);
   this->block->write(a);
 
-  std::cout << block << std::endl;
-  sc_stop();
 }

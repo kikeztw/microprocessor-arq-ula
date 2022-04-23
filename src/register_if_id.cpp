@@ -8,13 +8,12 @@ RegisterIFID::RegisterIFID(sc_module_name nm) : sc_module(nm) {
   // ue el reloj está en 0)
   SC_METHOD(write);
   sensitive << clkIn.neg();
-  dont_initialize();
+  
 
   // Solo se puede leer cuando el reloj están en 1 (clkIn.pos() representa que 
   // l reloj está en 1)
   SC_METHOD(read);
   sensitive << clkIn.pos();
-  dont_initialize();
 }
 
 void RegisterIFID::read() {
@@ -22,12 +21,9 @@ void RegisterIFID::read() {
   s.set(insSt);
   cpOut.write(cpSt);
   insOut.write(s);
-  // std::cout << insSt << " " << cpSt << std::endl;
 }
 
 void RegisterIFID::write() {
-
-  insSt = insIn.read().get();
+  insSt = insIn.read().str;
   cpSt = cpIn.read();
-  // std::cout << insSt << " " << cpSt << std::endl;
 }

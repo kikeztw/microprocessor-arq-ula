@@ -5,8 +5,6 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include <sysc/utils/sc_vector.h>
-// #include <sysc/communication/sc_signal_ports.h>
 #include <systemc.h>
 
 /**
