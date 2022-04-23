@@ -5,6 +5,8 @@ CMakeFiles/
 modules/
 phases/
 tests/
+Makefile
+src/Makefile
 Testing/
 utils/
 cmake_install.cmake

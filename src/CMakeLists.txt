@@ -4,15 +4,16 @@ cmake_minimum_required(VERSION 3.5)
 project(microprocessor CXX)
 
 include(CTest)
-
-set(CMAKE_PREFIX_PATH $ENV{SYSTEMC_HOME})
-
-find_package(SystemCLanguage CONFIG REQUIRED)
-
+set(CMAKE_PREFIX_PATH /usr/local/systemc-2.3.3)
+find_library(systemc systemc ${CMAKE_PREFIX_PATH}/lib-linux64)
+link_directories(${CMAKE_PREFIX_PATH}/lib-linux64)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(cv)
   set(CMAKE_CXX_STANDARD 17)
+  # set(CMAKE_PREFIX_PATH $ENV{SYSTEMC_HOME})
+  # find_package(SystemCLanguage CONFIG REQUIRED)
+
 endif()
 
 include_directories(
@@ -37,16 +38,17 @@ add_executable(
 
 target_link_libraries(
   ${PROJECT_NAME}.run
+  PUBLIC systemc
   PUBLIC A_UTILITY_FILES
   PUBLIC A_MODULES_PHASE_ONE
   PUBLIC A_PHASES
-  PRIVATE SystemC::systemc
+  # PRIVATE SystemCLanguage
 )
 
-set_property(
-  TARGET ${PROJECT_NAME}.run
-  PROPERTY CXX_STANDARD ${SystemC_CXX_STANDARD}
-)
+# set_property(
+#   TARGET ${PROJECT_NAME}.run
+#   PROPERTY CXX_STANDARD ${SystemC_CXX_STANDARD}
+# )
 
 add_test(
   NAME ${PROJECT_NAME}
