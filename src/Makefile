@@ -68,7 +68,7 @@ all: $(TARGET)
 	$(CC) $(CFLAGS) $(INCDIR) -c $<
 
 clean:
-	rm -f $(OBJS) *~ $(TARGET) *.bak $(TARGET).stackdump *.vcd
+	rm -f $(OBJS) *~ $(TARGET) *.bak $(TARGET).stackdump *.vcd *.o
 
 run:
 	./$(TARGET)
