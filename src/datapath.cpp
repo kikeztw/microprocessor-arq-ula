@@ -11,11 +11,14 @@ sc_event do_store_ev;
 
 // static bool stop = true;
 
-DataPath::DataPath(sc_module_name name) : sc_module(name), inf("inf")
+DataPath::DataPath(sc_module_name name)
+    : sc_module(name), inf("inf"), instructionDecode("instructiondecode")
 {
   // sc_stop();
 
   inf.clkIn(SgclkIn);
+  // cambiar
+  instructionDecode.clkIn(clkIn);
   // clkIn(clk);
 
   SC_THREAD(IF);

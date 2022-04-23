@@ -4,12 +4,8 @@
 #include <sysc/communication/sc_clock.h>
 #include <systemc.h>
 
-#include "modules/phase1/Adder.h"
-#include "modules/phase1/instruction_memory.h"
-#include "modules/phase1/pc.h"
-#include "modules/phase1/register_if_id.h"
 #include "phases/phase1.h"
-#include "utils/utils.h"
+#include "phases/phase2.h"
 /**
  * @class DataPath
  * @brief Clase que encapsula los modulos para lograr el DataPath de datos
@@ -25,6 +21,7 @@ class DataPath : public sc_module
   ~DataPath();  // Destructor
 
   CIF inf;
+  CID instructionDecode;
 
  private:
   sc_signal<bool> SgclkIn;
