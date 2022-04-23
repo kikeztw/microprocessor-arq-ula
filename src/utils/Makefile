@@ -4,7 +4,7 @@
 # Versión de SYSTEMC
 	VERSION = systemc-2.3.3
 # Especifique los archivos .cpp
-	SRCS = main.cpp camino.cpp pc.cpp Adder.cpp register_if_id.cpp utils.cpp  instruction_memory.cpp Testbench.cpp
+	SRCS = main.cpp datapath.cpp pc.cpp Adder.cpp register_if_id.cpp utils.cpp  instruction_memory.cpp Testbench.cpp
 # Nombre del ejecutable
 	TARGET = test
 #
@@ -48,7 +48,7 @@ ifeq ($(VERSION),systemc-2.3.3)
 endif
 
 INCDIR  = -I. -I.. -I../gates -I$(SYSTEMC_HOME_BY_VERSION)/include
-LIBDIR  = -L. -L.. -L$(SYSTEMC_HOME_BY_VERSION)/lib#-linux$(X64)
+LIBDIR  = -L. -L.. -L$(SYSTEMC_HOME_BY_VERSION)/lib-linux$(X64)
 LIBS    = -lm -lsystemc
 
 CFLAGS  = -g -Wno-deprecated -Wall

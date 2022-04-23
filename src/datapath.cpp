@@ -1,7 +1,8 @@
-#include "camino.h"
-#include "instruction_memory.h"
+#include "datapath.h"
+
 #include <sysc/kernel/sc_module_name.h>
 #include <sysc/kernel/sc_simcontext.h>
+
 sc_event do_decode_ev;
 sc_event do_execute_ev;
 sc_event do_memoryAccess_ev;
@@ -11,28 +12,18 @@ sc_event do_store_ev;
 // static bool stop = true;
 
 DataPath::DataPath(sc_module_name name)
-    : sc_module(name), adder("sumador"), im("im_"), pc("pc"), re("re_") {
-
+    : sc_module(name), inf("inf"), instructionDecode("instructiondecode")
+{
   // sc_stop();
-  pc.clkIn(clkIn);
-  pc.addressPC(SgInPC);
-  pc.addressBlock(SgOutPC);
 
-  adder.sIn(SgOutPC);
-  adder.sOut(SgOutadd);
+  inf.clkIn(SgclkIn);
+  // cambiar
+  instructionDecode.clkIn(clkIn);
+  // clkIn(clk);
 
-  im.address(SgOutPC);
-  im.block(SgOutim);
-
-  re.cpIn(SgOutPC);
-  re.insIn(SgOutim);
-  re.clkIn(clkIn);
-  re.cpOut(Sg_cpOutre);
-  re.insOut(Sg_stringDOutre);
-
-  // SC_THREAD(IF);
-  // sensitive << clkIn.pos();
-  // // dont_initialize();
+  SC_THREAD(IF);
+  sensitive << clkIn;
+  dont_initialize();
   // SC_THREAD(ID);
   // sensitive << do_decode_ev;
   // // dont_initialize();
@@ -46,19 +37,23 @@ DataPath::DataPath(sc_module_name name)
   // sensitive << do_writeBack_ev;
   // dont_initialize();
 }
-DataPath::~DataPath() {}
+DataPath::~DataPath()
+{
+}
 
-// void DataPath::IF() {
-//   while (1) {
-//     wait();
-
-//     // std::cout << clkIn->read() << std::endl;
-//     // std::cout << clkIn->read() << std::endl;
-//     // operaciones
-//     std::cout << " en IF" << std::endl;
-//     do_decode_ev.notify(SC_ZERO_TIME);
-//   }
-// }
+void DataPath::IF()
+{
+  while (1) {
+    wait();
+    SgclkIn = clkIn.read();
+    // std::cout << clkIn->read() << std::endl;
+    // std::cout << clkIn->read() << std::endl;
+    // operaciones
+    std::cout << "\n en IF" << std::endl;
+    do_decode_ev.notify(SC_ZERO_TIME);
+    // wait();
+  }
+}
 
 // void DataPath::ID() {
 //   while (1) {

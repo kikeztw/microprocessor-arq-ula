@@ -1,0 +1,4 @@
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/ejemplo04.asm
+  ${CMAKE_CURRENT_BINARY_DIR} COPYONLY
+)
