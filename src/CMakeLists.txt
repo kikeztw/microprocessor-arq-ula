@@ -11,7 +11,9 @@ find_package(SystemCLanguage CONFIG REQUIRED)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_CXX_STANDARD 17)
+if(cv)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
 
 include_directories(
   /
