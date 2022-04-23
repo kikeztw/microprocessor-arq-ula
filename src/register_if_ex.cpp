@@ -1,9 +1,9 @@
 #include "register_if_ex.h"
 
 RegisterIFEX::RegisterIFEX(sc_module_name nm) : sc_module(nm) {
-
-  rRg1Store = "";
-  rRg2InStore = "";
+  tagIn = "";
+  rRg1Store = 0;
+  rRg2InStore = 0;
   cpSt = 0;
   immStore = 0;
   immStore2 = 0;
@@ -20,27 +20,28 @@ RegisterIFEX::RegisterIFEX(sc_module_name nm) : sc_module(nm) {
 }
 
 void RegisterIFEX::read() {
-  string tempRRg1In, tempoRRg2In;
+  string temptag;
 
-  tempRRg1In.set(rRg1Store);
-  tempoRRg2In.set(rRg2InStore);
-
-  rd1Out.write(tempRRg1In);
-  rd2Out.write(tempoRRg2In);
+  // tag
+  temptag.set(tagStore);
+  tagOut.write(temptag);
 
   // PC and Imm
   cpOut.write(cpStore);
   immOut.write(immStore);
   immOut2.write(immStore2);
+  rd1Out.write(rRg1Store);
+  rd2Out.write(rRg2InStore);
 }
 
 void RegisterIFEX::write() {
   // register 1 and 2
-  rRg1Store = rRg1In.read().str;
-  rRg2InStore = rRg2In.read().str;
+  tagStore = tagIn.read().str;
   // PC write
   cpStore = cpIn.read();
   // imm input
   immStore = immIn.read();
   immStore2 = immIn2.read();
+  rRg1Store = rRg1In.read();
+  rRg2InStore = rRg2In.read();
 }
