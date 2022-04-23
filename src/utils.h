@@ -7,18 +7,6 @@
 #include <sstream>
 #include <string>
 #include <systemc.h>
-#include <vector>
-
-
-
-
-
-
-void readInstruction(std::string, int[]);//Esta funcion Lee la instruccion
-std::vector<std::string> split(std::string, char);//Esta funcion hace split de la linea
-bool compareString(std::string, std::string);//Compara dos strings ( 0 diferentes. 1 iguales)
-
-
 
 
 class string { // previously as struct

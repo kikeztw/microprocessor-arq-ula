@@ -5,6 +5,7 @@
 #include "instruction_memory.h"
 #include "pc.h"
 #include "register_if_id.h"
+#include "control_unit.h"
 #include "utils.h"
 #include <systemc.h>
 #include <iomanip>
@@ -38,10 +39,19 @@ public:
    sc_signal<sc_uint<32>> Sg_cpOutre;
    sc_signal<string> Sg_stringDOutre;
 
+   //===================SEGUNDA ETAPA======================
+
+   // cables de salida de la unidad de control
+   sc_signal<sc_uint<5>> SgControlOut[4];
+   sc_signal<sc_int<32>> SgValoresInmediatos[2];
+   sc_signal<string> SgTagOut;
+
+
    Adder adder;
    InstructioMemory im;
    PC pc;
    RegisterIFID re;
+   ControlUnit cu;
 
    private:
 
