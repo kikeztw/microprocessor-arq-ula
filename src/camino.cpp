@@ -3,7 +3,11 @@
 // static bool stop = true;
 
 DataPath::DataPath(sc_module_name name)
-    : sc_module(name), adder("sumador"), im("im_"), pc("pc"), re("re_"), cu("cu") {
+    : sc_module(name), adder("sumador"), im("im_"), pc("pc"),
+     re("re_"), cu("cu"), reIFEX("re_ifex"), rf("rf") {
+
+   sgRwRb = 0;
+   sgWRb = 0;
 
    pc.clkIn(clkIn);
    pc.addressPC(SgOutadd);
@@ -30,6 +34,20 @@ DataPath::DataPath(sc_module_name name)
    cu.bOut(SgValoresInmediatos[1]);
    cu.tagOut(SgTagOut);
 
+   rf.rwIn(sgRwRb);
+   rf.wIn(sgWRb);
+   rf.raIn(SgControlOut[2]);
+   rf.rbIn(SgControlOut[3]);
+   rf.aOut(sgRfOut[0]);
+   rf.bOut(sgRfOut[1]);
+
+   reIFEX.clkIn(clkIn);
+   reIFEX.rRg1In(sgRfOut[0]);
+   reIFEX.rRg1In(sgRfOut[0]);
+   reIFEX.cpIn(Sg_cpOutre);
+   reIFEX.immIn(SgValoresInmediatos[0]);
+   reIFEX.immIn(SgValoresInmediatos[1]);
+   
 
   SC_METHOD(test);
     sensitive << clkIn.neg();

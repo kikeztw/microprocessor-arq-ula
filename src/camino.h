@@ -6,6 +6,8 @@
 #include "pc.h"
 #include "register_if_id.h"
 #include "control_unit.h"
+#include "register_id_ex.h"
+#include "register_file.h"
 #include "utils.h"
 #include <systemc.h>
 #include <iomanip>
@@ -46,12 +48,19 @@ public:
    sc_signal<sc_int<32>> SgValoresInmediatos[2];
    sc_signal<string> SgTagOut;
 
+   // cables de write back
+    sic_signal<sc_uint<5>> sgRwRb, sgWRb;
+   // cable archivos de registros
+    sc_signal<sc_int<32>> sgRfOut[2];
+
 
    Adder adder;
    InstructioMemory im;
    PC pc;
    RegisterIFID re;
    ControlUnit cu;
+   RegisterIFEX reIFEX;
+   RegisterFile rf;
 
    private:
 

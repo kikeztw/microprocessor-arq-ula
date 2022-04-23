@@ -21,9 +21,10 @@ void RegisterFile::read()
 
 void RegisterFile::write()
 {
-    if(weIn.read())
-    {
-        registros[rwIn.read()] = wIn.read();        
-    }
+    //if(weIn.read())
+   // {
+        registros[rwIn.read()] = wIn.read();     
+        registros[0] = 0;   
+    //}
 
 }
