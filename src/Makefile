@@ -4,7 +4,7 @@
 # Versión de SYSTEMC
 	VERSION = systemc-2.3.3
 # Especifique los archivos .cpp
-	SRCS = Adder.cpp camino.cpp main.cpp pc.cpp utils.cpp instruction_memory.cpp register_if_id.cpp
+	SRCS = Adder.cpp camino.cpp control_unit.cpp  main.cpp pc.cpp utils.cpp instruction_memory.cpp register_if_id.cpp
 # Nombre del ejecutable
 	TARGET = test
 #
@@ -43,10 +43,10 @@ endif
 ifeq ($(VERSION),systemc-2.3.1)
 	CC = g++ -std=c++98
 endif
+
 ifeq ($(vd),1)
 	CC = g++ -std=c++17
 endif
-
 
 INCDIR  = -I. -I.. -I$(SYSTEMC_HOME_BY_VERSION)/include
 LIBDIR  = -L. -L.. -L$(SYSTEMC_HOME_BY_VERSION)/lib-linux$(X64)
