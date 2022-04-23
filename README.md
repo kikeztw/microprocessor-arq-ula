@@ -1,1 +1,4 @@
-# microprocessor-arq-ula
+# compilar
+
+cmake src/. 
+make
