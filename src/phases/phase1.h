@@ -2,6 +2,7 @@
 #define PHASE_1_H
 
 #include <sysc/communication/sc_clock.h>
+#include <sysc/communication/sc_signal.h>
 #include <systemc.h>
 
 #include "../modules/phase1/Adder.h"
@@ -36,10 +37,20 @@ class CIF : public sc_module
   sc_signal<bool> clk;
   sc_signal<sc_uint<32>> SgInPC;
   sc_signal<sc_uint<32>> SgOutPC;
+  sc_signal<sc_uint<5>> Sgop;
+  sc_signal<sc_uint<5>> Sgrd;
+  sc_signal<sc_uint<5>> Sgrs1;
+  sc_signal<sc_uint<5>> Sgrs2;
+  sc_signal<sc_uint<32>> Sgimm;
 
   // cables registros Encauzamiento
   sc_signal<sc_uint<32>> Sg_cpOutre;
   sc_signal<string> Sg_stringDOutre;
+  sc_signal<sc_uint<5>> SgopOut;
+  sc_signal<sc_uint<5>> SgrdOut;
+  sc_signal<sc_uint<5>> Sgrs1Out;
+  sc_signal<sc_uint<5>> Sgrs2Out;
+  sc_signal<sc_uint<32>> SgimmOut;
 
   Adder adder;
   InstructioMemory im;

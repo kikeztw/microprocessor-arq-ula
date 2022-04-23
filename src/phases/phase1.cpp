@@ -16,12 +16,28 @@ CIF::CIF(sc_module_name name)
 
   im.address(SgOutPC);
   im.block(SgOutim);
+  im.op(Sgop);
+  im.rd(Sgrd);
+  im.rs1(Sgrs1);
+  im.rs2(Sgrs2);
+  im.imm(Sgimm);
 
   re.cpIn(SgOutPC);
   re.insIn(SgOutim);
+  re.opIn(Sgop);
+  re.rdIn(Sgrd);
+  re.rs1In(Sgrs1);
+  re.rs2In(Sgrs2);
+  re.immIn(Sgimm);
+
   re.clkIn(clkIn);
   re.cpOut(Sg_cpOutre);
   re.insOut(Sg_stringDOutre);
+  re.opOut(SgopOut);
+  re.rdOut(SgrdOut);
+  re.rs1Out(Sgrs1Out);
+  re.rs2Out(Sgrs2Out);
+  re.immOut(SgimmOut);
 
   SC_METHOD(test)
   sensitive << clkIn;
@@ -45,6 +61,11 @@ void CIF::test()
     std::cout << "adder in: " << SgOutPC.read() << ", out:" << SgOutadd.read();
     log();
     std::cout << "IM in: " << SgOutPC.read() << ", out:" << SgOutim.read();
+    log();
+    std::cout << "IM in: " << SgOutPC.read() << ", out= "
+              << "op: " << Sgop.read() << ", rd: " << Sgrd.read()
+              << ", rs1: " << Sgrs1.read() << ", rs2: " << Sgrs2.read()
+              << ", imm: " << Sgimm.read();
   } else {
     std::cout << "\n============IF============";
     log();

@@ -13,17 +13,17 @@
   main:
     addi t0, zero, 1
     addi t1, zero, 5
-    addi t2, zero, v
-    lw a0, 0(t2)
+    addi t2, zero, 0
+    lw a0, 0 (t2)
     addi t2, t2, 4
   while:  
-    beq t0, t1, fin
-    lw t3, 0(t2)
-    ble t3, a0, next
+    beq t0, t1, 12
+    lw t3, 0 (t2)
+    ble t3, a0, 9
     add a0, zero, t3
   next:
     addi t2, t2, 4
-    addi t0,t0,1
-    beq zero, zero, while
+    addi t0, t0, 1
+    beq zero, zero, 5
   fin:  
     jalr zero, ra, 0
