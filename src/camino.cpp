@@ -22,8 +22,8 @@ DataPath::DataPath(sc_module_name name)
    re.insOut(Sg_stringDOutre);
 
   SC_METHOD(test);
-    sensitive << clkIn;
-  //dont_initialize();
+    sensitive << clkIn.neg();
+  dont_initialize();
 
 
 }
@@ -40,23 +40,33 @@ void DataPath::log()
 
 void DataPath::test()
 {
+<<<<<<< HEAD
   if(clkIn.read() == 1)
   {
     std::cout << "\n============IF============";
+=======
+  std::cout << "\n============IF============";
+>>>>>>> main
     log();
     std::cout << "PC out: " << SgOutPC.read();
     log();
     std::cout << "adder in: " << SgOutPC.read()  << ", out:" << SgOutadd.read();
     log();
     std::cout << "IM in: " << SgOutPC.read() << ", out:" << SgOutim.read();
+<<<<<<< HEAD
   }else
   {
     std::cout << "\n============IF============";
+=======
+>>>>>>> main
     log();
     std::cout << "PC in: " << SgOutadd.read();  
     log();
     std::cout << "IF/ID in: (instr:" << SgOutim.read() << ", pc:" << SgOutPC.read() << ")";
+<<<<<<< HEAD
   }
+=======
+>>>>>>> main
 
 }
 

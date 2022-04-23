@@ -44,6 +44,10 @@ ifeq ($(VERSION),systemc-2.3.1)
 	CC = g++ -std=c++98
 endif
 
+ifeq ($(vd),1)
+	CC = g++ -std=c++17
+endif
+
 INCDIR  = -I. -I.. -I$(SYSTEMC_HOME_BY_VERSION)/include
 LIBDIR  = -L. -L.. -L$(SYSTEMC_HOME_BY_VERSION)/lib-linux$(X64)
 LIBS    = -lm -lsystemc
