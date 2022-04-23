@@ -5,11 +5,12 @@
 #include <ctime>
 
 #include "datapath.h"
+#include "utils.h"
 int sc_main(int argc, char **argv)
 {
   sc_time period(10, SC_NS);
   sc_time delay(10, SC_NS);
-
+  std::string path = "./tests/ejemplo04.asm";
   sc_clock clock("clock", period, 0.5, delay, true);
   DataPath cam("camino");
   // Testbench test("test");
@@ -19,6 +20,8 @@ int sc_main(int argc, char **argv)
   sc_signal<string> Sg_stringDInre;
 
   cam.clkIn(clock);
+  // lee el .asm indicado
+  read(path, &cam.inf.im.L1_I, &cam.inf.im.labels, NULL, NULL);
   // cam.SgInPC(SgOutPC);
   // cam.Sg_cpOutre(Sg_cpIntre);
   // cam.Sg_stringDOutre(Sg_stringDInre);

@@ -26,6 +26,7 @@ include_directories(
 add_subdirectory(modules)
 add_subdirectory(phases)
 add_subdirectory(utils)
+add_subdirectory(tests)
 
 add_executable(
   ${PROJECT_NAME}.run

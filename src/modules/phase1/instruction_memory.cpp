@@ -2,11 +2,6 @@
 
 InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm)
 {
-  L1_I.push_back("p0 x1,x2,x3");
-  L1_I.push_back("p1 x1,x2,x3");
-  L1_I.push_back("p2 x1,x2,x3");
-  L1_I.push_back("p3 x1,x2,x3");
-
   SC_METHOD(read);
   sensitive << address;
   // dont_initialize();
@@ -17,7 +12,7 @@ void InstructioMemory::read()
   auto addres = address.read();
   std::string block;
 
-  if (addres >= 4)
+  if (addres >= L1_I.size())
     sc_stop();
 
   // busca el bloque si no esta, no devuelve nada
