@@ -4,7 +4,7 @@
 # Versión de SYSTEMC
 	VERSION = systemc-2.3.3
 # Especifique los archivos .cpp
-	SRCS = register_file.cpp register_id_ex.cpp Adder.cpp camino.cpp control_unit.cpp  main.cpp pc.cpp utils.cpp instruction_memory.cpp register_if_id.cpp
+	SRCS = register_file.cpp register_id_ex.cpp Adder.cpp camino.cpp control_unit.cpp  main.cpp pc.cpp utils.cpp instruction_memory.cpp register_if_id.cpp alu.cpp
 # Nombre del ejecutable
 	TARGET = test
 #
