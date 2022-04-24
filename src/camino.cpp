@@ -4,7 +4,7 @@
 
 DataPath::DataPath(sc_module_name name)
     : sc_module(name), adder("sumador"), im("im_"), pc("pc"),
-     re("re_"), cu("cu"), reIFEX("re_ifex"), rf("rf_") {
+     re("re_"), cu("cu")/*, reIFEX("re_ifex")*/, rf("rf_"){
 
    sgRwRb = 0;
    sgWRb = 0;
@@ -34,27 +34,28 @@ DataPath::DataPath(sc_module_name name)
    cu.bOut(SgValoresInmediatos[1]);
    cu.tagOut(SgTagOut);
 
-   rf.rwIn(sgRwRb);
-   rf.wIn(sgWRb);
-   rf.raIn(SgControlOut[2]);
-   rf.rbIn(SgControlOut[3]);
-   rf.aOut(sgRfOut[0]);
-   rf.bOut(sgRfOut[1]);
+    rf.clkIn(clkIn);
+    rf.rwIn(sgRwRb);
+    rf.wIn(sgWRb);
+    rf.raIn(SgControlOut[2]);
+    rf.rbIn(SgControlOut[3]);
+    rf.aOut(sgRfOut[0]);
+    rf.bOut(sgRfOut[1]);
 
-   reIFEX.clkIn(clkIn);
-   reIFEX.rRg1In(sgRfOut[0]);
-   reIFEX.rRg2In(sgRfOut[0]);
-   reIFEX.cpIn(Sg_cpOutre);
-   reIFEX.immIn(SgValoresInmediatos[0]);
-   reIFEX.immIn2(SgValoresInmediatos[1]);
-   reIFEX.tagIn(SgTagOut);
-   reIFEX.rwIn(SgControlOut[1]);
+  //  reIFEX.clkIn(clkIn);
+  //  reIFEX.rRg1In(sgRfOut[0]);
+  //  reIFEX.rRg2In(sgRfOut[0]);
+  //  reIFEX.cpIn(Sg_cpOutre);
+  //  reIFEX.immIn(SgValoresInmediatos[0]);
+  //  reIFEX.immIn2(SgValoresInmediatos[1]);
+  //  reIFEX.tagIn(SgTagOut);
+  //  reIFEX.rwIn(SgControlOut[1]);
 
-   reIFEX.aOut(sgReIDEXValues[0]);
-   reIFEX.bOut(sgReIDEXValues[1]);
-   reIFEX.cpOut(sgReIDEXCp);
-   reIFEX.tagOut(sgReIDEXTag);
-   reIFEX.rwOut(sgReIDEXRw);
+  //  reIFEX.aOut(sgReIDEXValues[0]);
+  //  reIFEX.bOut(sgReIDEXValues[1]);
+  //  reIFEX.cpOut(sgReIDEXCp);
+  //  reIFEX.tagOut(sgReIDEXTag);
+  //  reIFEX.rwOut(sgReIDEXRw);
    
 
   SC_METHOD(test);
