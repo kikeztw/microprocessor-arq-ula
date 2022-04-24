@@ -13,11 +13,11 @@ class RegisterFile: public sc_module {
     sc_in<sc_uint<5>> raIn;
     sc_in<sc_uint<5>> rbIn;
     sc_in<bool> clkIn;
-    sc_in<sc_uint<32>> wIn;
+    sc_in<sc_int<32>> wIn;
     //sc_in<bool> weIn;
-    sc_out<sc_uint<32>> aOut;
-    sc_out<sc_uint<32>> bOut;
-    sc_uint<32> registros[32];
+    sc_out<sc_int<32>> aOut;
+    sc_out<sc_int<32>> bOut;
+    sc_int<32> registros[32];
 
     private:
     void read();

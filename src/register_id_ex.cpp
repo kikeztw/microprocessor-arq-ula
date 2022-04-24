@@ -1,9 +1,9 @@
 #include "register_id_ex.h"
 
 RegisterIFEX::RegisterIFEX(sc_module_name nm) : sc_module(nm) {
-  tagIn = " ";
+  tagStore = "";
   aStore = 0;
-  bStore2 = 0;
+  bStore = 0;
   cpStore = 0;
   rwStore = 0;
   // Solo se puede escribir cuando el reloj está en 0 (clkIn.neg() representa 
@@ -29,7 +29,7 @@ void RegisterIFEX::read() {
   cpOut.write(cpStore);
   //valores
   aOut.write(aStore);
-  bOut.write(bStore2);
+  bOut.write(bStore);
   //direccion de registro de guardado
   rwOut.write(rwStore);
 
@@ -48,6 +48,6 @@ void RegisterIFEX::write() {
   if(immIn2.read() != 0)
     bStore = immIn2.read();
   // direccion
-  reStore = rwIn.read();
+  rwStore = rwIn.read();
 
 }

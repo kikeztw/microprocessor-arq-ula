@@ -28,7 +28,7 @@ public:
   // // cables sumador
    sc_signal<sc_uint<32>> SgInadd;
    sc_signal<sc_uint<32>> SgOutadd;
-
+  
   // // cables IM
    sc_signal<sc_uint<32>> SgInim;
    sc_signal<string> SgOutim;
@@ -49,9 +49,16 @@ public:
    sc_signal<string> SgTagOut;
 
    // cables de write back
-    sic_signal<sc_uint<5>> sgRwRb, sgWRb;
+    sc_signal<sc_uint<5>> sgRwRb;
+    sc_signal<sc_int<32>> sgWRb;
    // cable archivos de registros
     sc_signal<sc_int<32>> sgRfOut[2];
+
+   // cables salidas de registros ID/EX
+   sc_signal<sc_int<32>> sgReIDEXValues[2];
+   sc_signal<sc_uint<32>> sgReIDEXCp;
+   sc_signal<sc_uint<5>> sgReIDEXRw;
+   sc_signal<string> sgReIDEXTag;
 
 
    Adder adder;
