@@ -32,6 +32,7 @@ DataPath::DataPath(sc_module_name name)
    cu.rbOut(SgControlOut[3]);
    cu.aOut(SgValoresInmediatos[0]);
    cu.bOut(SgValoresInmediatos[1]);
+
    cu.tagOut(SgTagOut);
 
     rf.clkIn(clkIn);
@@ -50,12 +51,14 @@ DataPath::DataPath(sc_module_name name)
    reIFEX.immIn2(SgValoresInmediatos[1]);
    reIFEX.tagIn(SgTagOut);
    reIFEX.rwIn(SgControlOut[1]);
+   reIFEX.ctrlIn(SgControlOut[0]);
    
    reIFEX.aOut(sgReIDEXValues[0]);
    reIFEX.bOut(sgReIDEXValues[1]);
    reIFEX.cpOut(sgReIDEXCp);
    reIFEX.tagOut(sgReIDEXTag);
    reIFEX.rwOut(sgReIDEXRw);
+   reIFEX.ctrlOut(sgReIDEXCtrl);
    
 
   SC_METHOD(test);
@@ -91,7 +94,7 @@ void DataPath::test()
     
     std::cout << "\n============ID============";
     log();
-    std::cout << "IF/ID in: (instr:" << Sg_stringDOutre.read() << ", pc:" << Sg_cpOutre.read() << ")";
+    std::cout << "IF/ID out: (instr:" << Sg_stringDOutre.read() << ", pc:" << Sg_cpOutre.read() << ")";
     log();  
     std::cout << "CU in: " << Sg_stringDOutre.read();
       log();  
@@ -102,6 +105,18 @@ void DataPath::test()
     << ", sg vi a:" << SgValoresInmediatos[0].read()
     << ", sg vi b:" << SgValoresInmediatos[1].read()
     << ", tag: " << SgTagOut.read().str    << "]";
+    log();  
+    std::cout << "ID/EX in: [Rg1:"<< sgRfOut[0] << ",Rg2:"<< sgRfOut[1] 
+    << ",Inm1:" << SgValoresInmediatos[0].read()  << ",Inm2:" 
+    << SgValoresInmediatos[1].read() <<
+    ",tag:"<< SgTagOut.read().str  << ",rw:" << SgControlOut[1].read()
+      << ",ctrl:" << SgControlOut[0].read() << "]";
+    std::cout << "\n============EX============";
+    log();
+    std::cout << "ID/EX OUT: [a:"<< sgReIDEXValues[0].read() << ",b:"<< sgReIDEXValues[1].read() 
+    << ",ctrl:" << sgReIDEXCtrl.read() << ",rw:" << sgReIDEXRw.read() << ",tag:" << sgReIDEXTag.read().str
+    << "]";
+
 }
 
 DataPath::~DataPath() {}

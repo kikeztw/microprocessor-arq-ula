@@ -6,6 +6,7 @@ RegisterIFEX::RegisterIFEX(sc_module_name nm) : sc_module(nm) {
   bStore = 0;
   cpStore = 0;
   rwStore = 0;
+  ctrlStore = 0;
   // Solo se puede escribir cuando el reloj está en 0 (clkIn.neg() representa 
   // ue el reloj está en 0)
   SC_METHOD(write);
@@ -32,6 +33,9 @@ void RegisterIFEX::read() {
   bOut.write(bStore);
   //direccion de registro de guardado
   rwOut.write(rwStore);
+  
+  ctrlOut.write(ctrlStore);
+  
 
 }
 
@@ -49,5 +53,7 @@ void RegisterIFEX::write() {
     bStore = immIn2.read();
   // direccion
   rwStore = rwIn.read();
+
+  ctrlStore = ctrlIn.read();
 
 }

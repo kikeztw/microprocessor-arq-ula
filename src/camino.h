@@ -57,7 +57,7 @@ public:
    // cables salidas de registros ID/EX
    sc_signal<sc_int<32>> sgReIDEXValues[2];
    sc_signal<sc_uint<32>> sgReIDEXCp;
-   sc_signal<sc_uint<5>> sgReIDEXRw;
+   sc_signal<sc_uint<5>> sgReIDEXRw, sgReIDEXCtrl;
    sc_signal<string> sgReIDEXTag;
 
 
