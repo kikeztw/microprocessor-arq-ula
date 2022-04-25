@@ -9,6 +9,9 @@ InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
   L1_I.push_back("ble,x1,5,for");
   L1_I.push_back("beq,x1,x5,while");
 
+  labels["while"] = 5;
+  labels["metodo"] = 17;
+  labels["for"] = 10;
 
   SC_METHOD(read);
   sensitive << address;

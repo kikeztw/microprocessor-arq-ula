@@ -8,6 +8,7 @@
 #include "control_unit.h"
 #include "register_id_ex.h"
 #include "register_file.h"
+#include "adder_2.h"
 #include "utils.h"
 #include <systemc.h>
 #include <iomanip>
@@ -59,6 +60,8 @@ public:
    sc_signal<sc_uint<32>> sgReIDEXCp;
    sc_signal<sc_uint<5>> sgReIDEXRw, sgReIDEXCtrl;
    sc_signal<string> sgReIDEXTag;
+   //cable salida adder2
+   sc_signal<sc_uint<32>> sgAdder2Out;
 
 
    Adder adder;
@@ -68,6 +71,7 @@ public:
    ControlUnit cu;
    RegisterIFEX reIFEX;
    RegisterFile rf;
+   Adder2 adder2;
 
    private:
 

@@ -4,7 +4,7 @@
 
 DataPath::DataPath(sc_module_name name)
     : sc_module(name), adder("sumador"), im("im_"), pc("pc"),
-     re("re_"), cu("cu"), reIFEX("re_ifex"), rf("rf_"){
+     re("re_"), cu("cu"), reIFEX("re_ifex"), rf("rf_"), adder2("sumador2"){
 
    sgRwRb = 0;
    sgWRb = 0;
@@ -59,7 +59,9 @@ DataPath::DataPath(sc_module_name name)
    reIFEX.tagOut(sgReIDEXTag);
    reIFEX.rwOut(sgReIDEXRw);
    reIFEX.ctrlOut(sgReIDEXCtrl);
-   
+
+   adder2.sIn(sgReIDEXTag);
+   adder2.sOut(sgAdder2Out);   
 
   SC_METHOD(test);
     sensitive << clkIn.neg();
@@ -116,6 +118,8 @@ void DataPath::test()
     std::cout << "ID/EX OUT: [a:"<< sgReIDEXValues[0].read() << ",b:"<< sgReIDEXValues[1].read() 
     << ",ctrl:" << sgReIDEXCtrl.read() << ",rw:" << sgReIDEXRw.read() << ",tag:" << sgReIDEXTag.read().str
     << "]";
+    log();
+    std::cout << "sumador 2 in:" << sgReIDEXTag.read().str << ", out:" << sgAdder2Out;
 
 }
 
