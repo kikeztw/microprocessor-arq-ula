@@ -66,7 +66,7 @@ public:
    PC pc;
    RegisterIFID re;
    ControlUnit cu;
-   RegisterIFEX reIFEX;
+   RegisterIDEX reIDEX;
    RegisterFile rf;
 
    private:

@@ -1,6 +1,6 @@
 #include "register_id_ex.h"
 
-RegisterIFEX::RegisterIFEX(sc_module_name nm) : sc_module(nm) {
+RegisterIDEX::RegisterIDEX(sc_module_name nm) : sc_module(nm) {
   tagStore = "";
   aStore = 0;
   bStore = 0;
@@ -19,7 +19,7 @@ RegisterIFEX::RegisterIFEX(sc_module_name nm) : sc_module(nm) {
   sensitive << clkIn.pos();
 }
 
-void RegisterIFEX::read() {
+void RegisterIDEX::read() {
   string temptag;
 
   // tag
@@ -39,7 +39,7 @@ void RegisterIFEX::read() {
 
 }
 
-void RegisterIFEX::write() {
+void RegisterIDEX::write() {
   // register 1 and 2
   tagStore = tagIn.read().str;
   // PC write

@@ -5,7 +5,7 @@
 #include <string>
 #include <systemc.h>
 
-class RegisterIFEX : public sc_module {
+class RegisterIDEX : public sc_module {
 public:
   
   // clock
@@ -21,7 +21,7 @@ public:
   sc_out<string> tagOut;
   sc_out<sc_uint<5>> rwOut, ctrlOut;
 
-  SC_CTOR(RegisterIFEX);
+  SC_CTOR(RegisterIDEX);
 private:
   std::string tagStore;
   sc_int<32> aStore, bStore;

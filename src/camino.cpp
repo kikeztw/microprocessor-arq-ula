@@ -4,7 +4,7 @@
 
 DataPath::DataPath(sc_module_name name)
     : sc_module(name), adder("sumador"), im("im_"), pc("pc"),
-     re("re_"), cu("cu"), reIFEX("re_ifex"), rf("rf_"){
+     re("re_"), cu("cu"), reIDEX("re_ifex"), rf("rf_"){
 
    sgRwRb = 0;
    sgWRb = 0;
@@ -43,22 +43,22 @@ DataPath::DataPath(sc_module_name name)
     rf.aOut(sgRfOut[0]);
     rf.bOut(sgRfOut[1]);
 
-   reIFEX.clkIn(clkIn);
-   reIFEX.rRg1In(sgRfOut[0]);
-   reIFEX.rRg2In(sgRfOut[0]);
-   reIFEX.cpIn(Sg_cpOutre);
-   reIFEX.immIn(SgValoresInmediatos[0]);
-   reIFEX.immIn2(SgValoresInmediatos[1]);
-   reIFEX.tagIn(SgTagOut);
-   reIFEX.rwIn(SgControlOut[1]);
-   reIFEX.ctrlIn(SgControlOut[0]);
+   reIDEX.clkIn(clkIn);
+   reIDEX.rRg1In(sgRfOut[0]);
+   reIDEX.rRg2In(sgRfOut[0]);
+   reIDEX.cpIn(Sg_cpOutre);
+   reIDEX.immIn(SgValoresInmediatos[0]);
+   reIDEX.immIn2(SgValoresInmediatos[1]);
+   reIDEX.tagIn(SgTagOut);
+   reIDEX.rwIn(SgControlOut[1]);
+   reIDEX.ctrlIn(SgControlOut[0]);
    
-   reIFEX.aOut(sgReIDEXValues[0]);
-   reIFEX.bOut(sgReIDEXValues[1]);
-   reIFEX.cpOut(sgReIDEXCp);
-   reIFEX.tagOut(sgReIDEXTag);
-   reIFEX.rwOut(sgReIDEXRw);
-   reIFEX.ctrlOut(sgReIDEXCtrl);
+   reIDEX.aOut(sgReIDEXValues[0]);
+   reIDEX.bOut(sgReIDEXValues[1]);
+   reIDEX.cpOut(sgReIDEXCp);
+   reIDEX.tagOut(sgReIDEXTag);
+   reIDEX.rwOut(sgReIDEXRw);
+   reIDEX.ctrlOut(sgReIDEXCtrl);
    
 
   SC_METHOD(test);
