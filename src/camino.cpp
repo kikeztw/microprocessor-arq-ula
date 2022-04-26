@@ -4,7 +4,11 @@
 
 DataPath::DataPath(sc_module_name name)
     : sc_module(name), adder("sumador"), im("im_"), pc("pc"),
+<<<<<<< HEAD
      re("re_"), cu("cu"), reIDEX("re_ifex"), rf("rf_"){
+=======
+     re("re_"), cu("cu"), reIFEX("re_ifex"), rf("rf_"), adder2("sumador2"){
+>>>>>>> fabian-dev
 
    sgRwRb = 0;
    sgWRb = 0;
@@ -53,6 +57,7 @@ DataPath::DataPath(sc_module_name name)
    reIDEX.rwIn(SgControlOut[1]);
    reIDEX.ctrlIn(SgControlOut[0]);
    
+<<<<<<< HEAD
    reIDEX.aOut(sgReIDEXValues[0]);
    reIDEX.bOut(sgReIDEXValues[1]);
    reIDEX.cpOut(sgReIDEXCp);
@@ -60,6 +65,17 @@ DataPath::DataPath(sc_module_name name)
    reIDEX.rwOut(sgReIDEXRw);
    reIDEX.ctrlOut(sgReIDEXCtrl);
    
+=======
+   reIFEX.aOut(sgReIDEXValues[0]);
+   reIFEX.bOut(sgReIDEXValues[1]);
+   reIFEX.cpOut(sgReIDEXCp);
+   reIFEX.tagOut(sgReIDEXTag);
+   reIFEX.rwOut(sgReIDEXRw);
+   reIFEX.ctrlOut(sgReIDEXCtrl);
+
+   adder2.sIn(sgReIDEXTag);
+   adder2.sOut(sgAdder2Out);   
+>>>>>>> fabian-dev
 
   SC_METHOD(test);
     sensitive << clkIn.neg();
@@ -116,6 +132,8 @@ void DataPath::test()
     std::cout << "ID/EX OUT: [a:"<< sgReIDEXValues[0].read() << ",b:"<< sgReIDEXValues[1].read() 
     << ",ctrl:" << sgReIDEXCtrl.read() << ",rw:" << sgReIDEXRw.read() << ",tag:" << sgReIDEXTag.read().str
     << "]";
+    log();
+    std::cout << "sumador 2 in:" << sgReIDEXTag.read().str << ", out:" << sgAdder2Out;
 
 }
 

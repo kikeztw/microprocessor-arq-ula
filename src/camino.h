@@ -8,12 +8,13 @@
 #include "control_unit.h"
 #include "alu.h"
 #include "adder"
+#include "register_file.h"
 // registro de encauzamiento
 #include "register_if_id.h"
 #include "register_id_ex.h"
-#include "register_file.h"
 #include "register_ex_mem.h"
 // utils
+#include "adder_2.h"
 #include "utils.h"
 // default
 #include <systemc.h>
@@ -66,6 +67,8 @@ public:
    sc_signal<sc_uint<32>> sgReIDEXCp;
    sc_signal<sc_uint<5>> sgReIDEXRw, sgReIDEXCtrl;
    sc_signal<string> sgReIDEXTag;
+   //cable salida adder2
+   sc_signal<sc_uint<32>> sgAdder2Out;
 
   // Tercera etapa
 
@@ -77,6 +80,7 @@ public:
    ControlUnit cu;
    RegisterIDEX reIDEX;
    RegisterFile rf;
+   Adder2 adder2;
 
    private:
 
