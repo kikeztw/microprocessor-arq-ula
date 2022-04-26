@@ -8,13 +8,13 @@
 #include "control_unit.h"
 #include "alu.h"
 #include "adder"
+#include "adder_2.h"
 #include "register_file.h"
 // registro de encauzamiento
 #include "register_if_id.h"
 #include "register_id_ex.h"
 #include "register_ex_mem.h"
 // utils
-#include "adder_2.h"
 #include "utils.h"
 // default
 #include <systemc.h>
