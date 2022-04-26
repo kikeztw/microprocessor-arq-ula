@@ -1,14 +1,21 @@
 #ifndef camino
 #define camino
 
+// modules
 #include "Adder.h"
 #include "instruction_memory.h"
 #include "pc.h"
-#include "register_if_id.h"
 #include "control_unit.h"
+#include "alu.h"
+#include "adder"
+// registro de encauzamiento
+#include "register_if_id.h"
 #include "register_id_ex.h"
 #include "register_file.h"
+#include "register_ex_mem.h"
+// utils
 #include "utils.h"
+// default
 #include <systemc.h>
 #include <iomanip>
 /**
@@ -59,6 +66,8 @@ public:
    sc_signal<sc_uint<32>> sgReIDEXCp;
    sc_signal<sc_uint<5>> sgReIDEXRw, sgReIDEXCtrl;
    sc_signal<string> sgReIDEXTag;
+
+  // Tercera etapa
 
 
    Adder adder;
