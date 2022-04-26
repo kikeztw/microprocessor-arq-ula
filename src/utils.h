@@ -9,14 +9,14 @@
 #include <systemc.h>
 
 enum OPCODES {
+  NONE,
   SUM,
   SUB,
   DIV,
   MUL,
   AND,
   OR
-
-};
+}; // 
 
 class string { // previously as struct
 

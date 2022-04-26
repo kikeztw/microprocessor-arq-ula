@@ -1,13 +1,13 @@
 #include "alu.h"
 void ALU::operation() {
 
-  sc_uint<32> dataA, dataB, res;
+  sc_int<32> dataA, dataB, res;
   zero = false;
   dataA = opA.read();
   dataB = opB.read();
 
   switch (op.read()) {
-
+   
   case AND:
     res = dataA && dataB;
     break;

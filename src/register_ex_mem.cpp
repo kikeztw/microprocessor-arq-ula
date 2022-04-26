@@ -1,9 +1,11 @@
 #include "register_ex_mem.h"
 
 RegisterEXMEM::RegisterEXMEM(sc_module_name nm) : sc_module(nm) {
-  addStore = 0;
   aluStore = 0;
+  addStore = 0;
   rwStore = 0;
+  ctrlStore = 0;
+  zeroFlagStore = false;
   // Solo se puede escribir cuando el reloj está en 0 (clkIn.neg() representa 
   // ue el reloj está en 0)
   SC_METHOD(write);

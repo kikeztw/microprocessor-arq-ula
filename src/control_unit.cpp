@@ -60,8 +60,7 @@ void ControlUnit::readInstruction() {
   std::string instruction = sIn.read().str;
 
   if (instruction == "") {
-    data[0] =
-        0; // entonces pondemos la instruccion addi,x0,zero,1 que no hace nada
+    data[0] = 0; // entonces pondemos la instruccion addi,x0,zero,1 que no hace nada
     data[1] = 0;
     data[2] = 0;
     data[3] = 0;

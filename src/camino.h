@@ -7,7 +7,6 @@
 #include "pc.h"
 #include "control_unit.h"
 #include "alu.h"
-#include "adder"
 #include "adder_2.h"
 #include "register_file.h"
 // registro de encauzamiento
@@ -68,21 +67,34 @@ public:
    sc_signal<sc_uint<5>> sgReIDEXRw, sgReIDEXCtrl;
    sc_signal<string> sgReIDEXTag;
    //cable salida adder2
-   sc_signal<sc_uint<32>> sgAdder2Out;
+   sc_signal<sc_uint<32>> sgAdder2Out; // <-----
 
-  // Tercera etapa
+   //===================TERCERA ETAPA======================
 
+    //sc_signal<sc_uint<4>> sOpAlu;
+    sc_signal<bool> sgZero;
+    sc_signal<sc_int<32>> sgResult;
 
-   Adder adder;
-   InstructioMemory im;
-   PC pc;
-   RegisterIFID re;
-   ControlUnit cu;
-   RegisterIDEX reIDEX;
-   RegisterFile rf;
-   Adder2 adder2;
+    sc_signal<sc_int<32>> sgEXMEMaluOut;
+    sc_signal<sc_uint<32>> sgEXMEMaddOut;
+    sc_signal<sc_uint<5>> sgEXMEMrwOut, sgEXMEMctrlOut;
+    sc_signal<bool> sgEXMEMzeroFlagOut;
+  
+    // modules
+    Adder adder;
+    RegisterFile rf;
+    InstructioMemory im;
+    PC pc;
+    ControlUnit cu;
+    Adder2 adder2;
+    ALU alu;
+    // registros de encauzamiento
+    RegisterIFID re;
+    RegisterIDEX reIDEX;
+    RegisterEXMEM reEXMEM;
+   
 
-   private:
+  private:
 
    void log();
    void test();

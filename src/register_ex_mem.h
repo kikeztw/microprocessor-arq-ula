@@ -10,17 +10,20 @@ public:
   
   // input
   sc_in<sc_uint<5>> rwIn, ctrlIn;
-  sc_in<sc_int<32>> addIn, aluIn;
+  sc_in<sc_int<32>> aluIn;
+  sc_in<sc_uint<32>> addIn;
   sc_in<bool> clkIn, zeroFlagIn;
   // output
-  sc_out<sc_int<32>> addOut, aluOut;
+  sc_out<sc_int<32>> aluOut;
   sc_out<sc_uint<5>> rwOut, ctrlOut;
+  sc_out<sc_uint<32>> addOut;
   sc_out<bool> zeroFlagOut;
 
   SC_CTOR(RegisterEXMEM);
 private:
   // std::string tagStore;
-  sc_int<32> addStore, aluStore;
+  sc_int<32>  aluStore;
+  sc_uint<32> addStore;
   sc_uint<5> rwStore, ctrlStore;
   sc_out<bool> zeroFlagStore;
 
