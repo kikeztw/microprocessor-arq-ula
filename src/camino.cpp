@@ -140,7 +140,14 @@ void DataPath::test()
     << "]";
     log();
     std::cout << "sumador 2 in:" << sgReIDEXTag.read().str << ", out:" << sgAdder2Out;
-
+    log();
+    std::cout << "ALU in: [a:" << sgReIDEXValues[0] << ",b:" << sgReIDEXValues[1] 
+    << ",ctrl:" <<  sgReIDEXCtrl << "] out: [r:" << sgResult.read() << ",z:"
+    << sgZero.read() << "]";
+    
+    log();
+    std::cout << "IX/MEM in: [alu:" << sgResult.read() << ",zero:" << sgZero.read()
+    << ",add:" << sgAdder2Out << ",ctrl:" << sgReIDEXCtrl << "]";
 }
 
 DataPath::~DataPath() {}

@@ -7,21 +7,25 @@ void ALU::operation() {
   dataB = opB.read();
 
   switch (op.read()) {
-   
-  case AND:
-    res = dataA && dataB;
-    break;
 
-  case OR:
-    res = dataA || dataB;
-    break;
+    case AND:
+      res = dataA && dataB;
+      break;
 
-  case SUM:
-    res = dataA + dataB;
-    break;
+    case OR:
+      res = dataA || dataB;
+      break;
 
-  case SUB:
-    res = dataA - dataB;
+    case SUM:
+      res = dataA + dataB;
+      break;
+
+    case SUB:
+      res = dataA - dataB;
+      break;
+
+    default:
+      res = 0;
     break;
   }
   result.write(res);

@@ -25,7 +25,7 @@ private:
   sc_int<32>  aluStore;
   sc_uint<32> addStore;
   sc_uint<5> rwStore, ctrlStore;
-  sc_out<bool> zeroFlagStore;
+  bool zeroFlagStore;
 
   void read();
   void write();

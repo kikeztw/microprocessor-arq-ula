@@ -1,7 +1,7 @@
 #include "instruction_memory.h"
 
 InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
-  L1_I.push_back("add,x1,x2,x3");
+  L1_I.push_back("add,x1,x0,5");
   L1_I.push_back("add,x0,x0,x0");
   L1_I.push_back("lw,x1,x2,5");
   L1_I.push_back("beq,x0,x0,for");

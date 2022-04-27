@@ -32,7 +32,7 @@ void ControlUnit::operation() {
       aOut.write(data[2]);
     }
 
-    if (data[4] == 0)
+    if (data[5] == 0)
       rbOut.write(data[3]);
     else {
       rbOut.write(0);
@@ -112,7 +112,7 @@ void ControlUnit::readInstruction() {
   // si es salto
   if (data[0] == 5 || data[0] == 4 || data[0] == 3) {
     data[5] = 2;
-    data[3] = 0;
+    data[4] = 0;
     tag = parts[3];
   } else {
     // Quitamos la x del dato 2

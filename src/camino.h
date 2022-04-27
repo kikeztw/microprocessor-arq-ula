@@ -82,15 +82,15 @@ public:
   
     // modules
     Adder adder;
-    RegisterFile rf;
     InstructioMemory im;
     PC pc;
+    RegisterIFID re;
     ControlUnit cu;
+    RegisterIDEX reIDEX;
+    RegisterFile rf;
     Adder2 adder2;
     ALU alu;
     // registros de encauzamiento
-    RegisterIFID re;
-    RegisterIDEX reIDEX;
     RegisterEXMEM reEXMEM;
    
 
