@@ -67,10 +67,12 @@ void read(const std::string &path, std::vector<std::string> *L1I,
           (*dic).insert({valor.substr(2, valor.find(":")), i});
           continue;
         }
+
+        valor.erase(std::remove(valor.begin(), valor.end(), ' '), valor.end());
         // valor.pop_back();
         // valor.pop_back();
-        std::cout << valor.substr(4) << "\n";
-        // L1I->push_back(valor.substr(4));
+        std::cout << valor << "\n";
+        L1I->push_back(valor.substr(4));
         i++;
       }
     }
