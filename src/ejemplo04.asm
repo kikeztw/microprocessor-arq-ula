@@ -17,10 +17,11 @@
     lw,x0,x1,2
     add,x2,x2,4
   while:  
-    beq, t0, t1, fin
-    lw, t3, 0, t2
-    ble, t3, a0, next
-    add, a0, zero, t3
+    beq, x0, x1, fin
+    beq, x0, 1, fin
+    lw, x3, x0, x2
+    ble, x3, x0, next
+    add, x0, x1, x3
   next:
     addi, t2, t2, 4
     addi, t0,t0,1
