@@ -75,7 +75,8 @@ void ControlUnit::readInstruction() {
 
   // data hace referencia a 4 resultados, 0. Instruccion  1. Registro
   // Destino  2. Primer dato  3. Segundo dato
-  std::vector<std::string> Dic = {"add", "lw", "beq", "ble", "jarl"};
+  std::vector<std::string> Dic = {"add", "sub", "beq", "bne", "blt",
+  "div", "mod", "mulh", "mull", "and", "or", "lw","sw" };
   std::vector<std::string> parts;
   // separamos el string en 4 strings
   parts = split(instruction, ',');
@@ -110,9 +111,9 @@ void ControlUnit::readInstruction() {
   data[2] = atoi(parts[2].c_str());
 
   // si es salto
-  if (data[0] == 5 || data[0] == 4 || data[0] == 3) {
+  if (data[0] == 3 || data[0] == 4 || data[0] == 5) {
     data[5] = 2;
-    data[4] = 0;
+    //data[4] = 0;
     tag = parts[3];
   } else {
     // Quitamos la x del dato 2

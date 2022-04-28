@@ -8,7 +8,22 @@
 #include <string>
 #include <systemc.h>
 
-enum OPCODES { NONE, SUM, SUB, DIV, MUL, AND, OR }; //
+enum OPCODES {
+  NONE,
+  ADD,
+  SUB,
+  BEQ,
+  BNE,
+  BLT,
+  DIV,
+  MOD,
+  MULH,
+  MULL,
+  AND,
+  OR,
+  LW,
+  SW
+}; // 
 
 class string { // previously as struct
 
