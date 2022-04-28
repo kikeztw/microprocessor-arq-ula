@@ -1,7 +1,6 @@
 #include "data_memory.h"
 
-
-DataMemory::DataMemory(sc_module_name nm): sc_module(nm) {
+DataMemory::DataMemory(sc_module_name nm) : sc_module(nm) {
   SC_METHOD(write);
   sensitive << clkIn.neg();
 
@@ -9,12 +8,9 @@ DataMemory::DataMemory(sc_module_name nm): sc_module(nm) {
   sensitive << clkIn.pos();
 }
 
-
-void DataMemory::read(){
+void DataMemory::read() {
   // ???
   // rwOut.write(data[addressIn.read()]);
 }
 
-void DataMemory::write(){
-  memory[rwIn.read()] = wIn.read();
-}
+void DataMemory::write() {}
