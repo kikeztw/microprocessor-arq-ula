@@ -21,7 +21,7 @@ void read(const std::string &path, std::vector<std::string> *L1I,
           std::map<std::string, int> *dic, std::vector<int> *L1D = NULL,
           std::map<std::string, int> *dicB = NULL) {
   int i = 0;
-  int direccionID{0};
+  // int direccionID{0};
   std::ifstream input_file(path);
   if (!input_file.is_open()) {
     std::cerr << "Could not open the file - '" << path << "'" << std::endl;

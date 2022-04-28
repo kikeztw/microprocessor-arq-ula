@@ -1,7 +1,7 @@
 #include "instruction_memory.h"
 
 InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
-  L1_I.push_back("add,x1,x0,5");
+  // L1_I.push_back("add,x1,x0,5");
   /*L1_I.push_back("add,x0,x0,x0");
   L1_I.push_back("lw,x1,x2,5");
   L1_I.push_back("beq,x0,x0,for");
@@ -9,9 +9,9 @@ InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
   L1_I.push_back("ble,x1,5,for");
   L1_I.push_back("beq,x1,x5,while");*/
 
-  labels["while"] = 5;
-  labels["metodo"] = 17;
-  labels["for"] = 10;
+  // labels["while"] = 5;
+  // labels["metodo"] = 17;
+  // labels["for"] = 10;
 
   SC_METHOD(read);
   sensitive << address;
@@ -22,7 +22,7 @@ void InstructioMemory::read() {
   auto addres = address.read();
   std::string block;
 
-  if(addres >= (L1_I.size() + 1))
+  if (addres >= (L1_I.size() + 1))
     sc_stop();
 
   // busca el bloque si no esta, no devuelve nada
@@ -62,5 +62,4 @@ void InstructioMemory::read() {
 
   a.set(block);
   this->block->write(a);
-
 }

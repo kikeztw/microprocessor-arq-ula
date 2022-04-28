@@ -32,4 +32,5 @@ void clear();
 void read(const std::string &path, std::vector<std::string> *L1I,
           std::map<std::string, int> *dic, std::vector<int> *L1D,
           std::map<std::string, int> *dicB);
+
 #endif // !UTILS_H
