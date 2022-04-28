@@ -53,7 +53,7 @@ void read(const std::string &path, std::vector<std::string> *L1I,
         // std::cout << valor.find(":") + 1 << std::endl;
         std::stringstream d(valor.substr(valor.find(":") + 1));
         while (std::getline(d, v, ',')) {
-          // std::cout << v;
+          std::cout << v;
           L1D->push_back(std::stoi(v));
           i += 4;
         }
