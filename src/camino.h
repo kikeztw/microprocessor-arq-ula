@@ -51,6 +51,7 @@ public:
   // // cables registros Encauzamiento
   sc_signal<sc_uint<32>> Sg_cpOutre;
   sc_signal<string> Sg_stringDOutre;
+  sc_signal<sc_uint<32>> sgMuxOut;
 
   //===================SEGUNDA ETAPA======================
 
@@ -84,6 +85,21 @@ public:
   sc_signal<sc_uint<5>> sgEXMEMrwOut, sgEXMEMctrlOut;
   sc_signal<bool> sgEXMEMzeroFlagOut;
 
+
+  //=====================CUARTA ETAPA=======================
+
+  sc_signal<bool> sgBranch;
+  
+
+
+
+
+
+
+
+
+
+  
   // modules
   Adder adder;
   InstructioMemory im;
@@ -94,8 +110,11 @@ public:
   RegisterFile rf;
   Adder2 adder2;
   ALU alu;
+  AndBranch andBranch;
+  Mux muxCp;
   // registros de encauzamiento
   RegisterEXMEM reEXMEM;
+
 
 private:
   void log();

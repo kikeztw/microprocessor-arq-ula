@@ -4,14 +4,21 @@
 
 DataPath::DataPath(sc_module_name name)
     : sc_module(name), adder("sumador"), im("im_"), pc("pc"),
-     re("re_"), cu("cu"), reIDEX("re_ifex"), rf("rf_"), adder2("sumador2"),  alu("alu"), reEXMEM("reEXMEM"){
+     re("re_"), cu("cu"), reIDEX("re_ifex"), rf("rf_"), adder2("sumador2"),  alu("alu"), reEXMEM("reEXMEM"), andBranch("andBranch"), muxCp("muxCp") {
    /* reEXMEM("reEXMEM") */
 
    sgRwRb = 0;
    sgWRb = 0;
+   sgBranch = 0;
+   sgEXMEMaddOut = 0;
+
+   muxCp.s0In(sgBranch);
+   muxCp.aIn(SgOutadd);
+   muxCp.bIn(sgEXMEMaddOut);
+   muxCp.cOut(sgMuxOut);
 
    pc.clkIn(clkIn);
-   pc.addressPC(SgOutadd);
+   pc.addressPC(sgMuxOut);
    pc.addressBlock(SgOutPC);
 
    adder.sIn(SgOutPC);
@@ -82,6 +89,12 @@ DataPath::DataPath(sc_module_name name)
    reEXMEM.rwOut(sgEXMEMrwOut);
    reEXMEM.ctrlOut(sgEXMEMctrlOut);
    reEXMEM.zeroFlagOut(sgEXMEMzeroFlagOut);
+   
+   andBranch.zeroIn(sgEXMEMzeroFlagOut);
+   andBranch.addIn(sgEXMEMaddOut);
+   andBranch.sOut(sgBranch);
+
+   
 
   SC_METHOD(test);
     sensitive << clkIn.neg();
