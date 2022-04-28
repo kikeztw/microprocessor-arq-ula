@@ -16,8 +16,8 @@ public:
 
   sc_out<sc_uint<5>> rdOut;
   sc_out<sc_uint<5>> opCodeOut;
-  sc_out<sc_int<5>> readDataOut;
-  sc_out<sc_int<5>> resultAluOut;
+  sc_out<sc_int<32>> readDataOut;
+  sc_out<sc_int<32>> resultAluOut;
   SC_CTOR(RegisterMEMWB);
 
 private:

@@ -90,7 +90,8 @@ public:
 
   sc_signal<bool> sgBranch;
   sc_signal<sc_int<32>> sgvalue; //salida de data memory
-
+  sc_signal<sc_uint<5>> sgMEMWBrdOut, sgMEMWBCtrlOut;
+  sc_signal<sc_int<32>> sgMEMWBdataOut, sgMEMWBaluOut;
 
 //========================QUINTA ETAPA=======================
   // modules
@@ -108,6 +109,7 @@ public:
   // registros de encauzamiento
   RegisterEXMEM reEXMEM;
   DataMemory dataMem;
+  RegisterMEMWB reMEMWB;
 
 private:
   void log();
