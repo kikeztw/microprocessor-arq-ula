@@ -9,6 +9,9 @@
 #include "instruction_memory.h"
 #include "pc.h"
 #include "register_file.h"
+#include "and_branch.h"
+#include "Mux.cpp"
+#include "data_memory.h"
 // registro de encauzamiento
 #include "register_ex_mem.h"
 #include "register_id_ex.h"

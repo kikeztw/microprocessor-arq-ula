@@ -5,9 +5,9 @@ AndBranch::AndBranch(sc_module_name nm) : sc_module(nm) {
   sensitive << addIn << zeroIn;
 }
 
-void Adder::operation() { 
+void AndBranch::operation() { 
   if(zeroIn.read() == 1 && addIn.read() != 0)
     sOut.write(true);
-  else:
+  else
     sOut.write(false);
 }

@@ -1,5 +1,5 @@
-#ifndef MUX_H
-#define MUX_H
+#ifndef MUX_CP_H
+#define MUX_CP_H
 
 #include <systemc.h>
 
@@ -8,7 +8,7 @@ class Mux: public sc_module {
 public:
   sc_in<sc_uint<32>> aIn, bIn;
   sc_in<bool> s0In;
-  sc_out<sc_int<32>> cOut;
+  sc_out<sc_uint<32>> cOut;
 
   SC_CTOR(Mux);
 
