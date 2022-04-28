@@ -9,7 +9,6 @@ InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
   // L1_I.push_back("bne,x3,1,for");
   // L1_I.push_back("bne,x3,x1,for");
 
-
   // L1_I.push_back("add,x0,x0,x0");
   // L1_I.push_back("add,x0,x0,x0");
 

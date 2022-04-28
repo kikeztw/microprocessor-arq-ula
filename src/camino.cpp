@@ -104,6 +104,8 @@ void DataPath::log()
 
 void DataPath::test()
 {
+  
+
     std::cout << "\n======================IF=============================================";
     log();
     std::cout << "| PC  | out: " << SgOutPC.read();
@@ -150,7 +152,7 @@ void DataPath::test()
     log();
     std::cout << "|IX/ME| in: [alu:" << sgResult.read() << ",zero:" << sgZero.read()
     << ",add:" << sgAdder2Out << ",ctrl:" << sgReIDEXCtrl << "]";
-    std::cout << "\n======================FIN DE CICLO==================================\n\n\n";
+    std::cout << "\n======================FIN DE CICLO====================================\n\n\n";
 }
 
 DataPath::~DataPath() {}

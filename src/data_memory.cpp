@@ -1,20 +1,18 @@
 #include "data_memory.h"
 
-
-DataMemory::DataMemory(sc_module_name nm): sc_module(nm) {
-  SC_METHOD(write);
-  sensitive << clkIn.neg();
-
-  SC_METHOD(read);
-  sensitive << clkIn.pos();
+DataMemory::DataMemory(sc_module_name nm) : sc_module(nm) {
+  SC_METHOD(op);
+  sensitive << opCodeIn;
+  dont_initialize();
 }
 
-
-void DataMemory::read(){
-  // ???
-  // rwOut.write(data[addressIn.read()]);
-}
-
-void DataMemory::write(){
-  memory[rwIn.read()] = wIn.read();
+void DataMemory::op() {
+  auto op_code = opCodeIn.read();
+  if (op_code == LW) {
+    valueOut.write(L1_D[addressIn.read()]);
+    // lee
+  } else if (op_code == SW) {
+    // escribe
+    L1_D[addressIn.read()] = valueIn.read();
+  }
 }
