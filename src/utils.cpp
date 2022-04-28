@@ -71,7 +71,7 @@ void read(const std::string &path, std::vector<std::string> *L1I,
         valor.erase(std::remove(valor.begin(), valor.end(), ' '), valor.end());
         // valor.pop_back();
         // valor.pop_back();
-        std::cout << valor << "\n";
+        // std::cout << valor << "\n";
         L1I->push_back(valor.substr(4));
         i++;
       }
