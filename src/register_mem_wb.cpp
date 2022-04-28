@@ -1,6 +1,5 @@
 #include "register_mem_wb.h"
 
-
 RegisterMEMWB::RegisterMEMWB(sc_module_name nm) : sc_module(nm) {
   SC_METHOD(write);
   sensitive << clkIn.neg();
@@ -10,11 +9,15 @@ RegisterMEMWB::RegisterMEMWB(sc_module_name nm) : sc_module(nm) {
 }
 
 void RegisterMEMWB::read() {
-  regDestinyOut.write(regDestinyStore);
-  rdOut.write(dataStore);
+  rdOut.write(rdS);
+  readDataOut.write(readDataS);
+  resultAluOut.write(resultAluS);
+  opCodeOut.write(opCodeS);
 }
 
 void RegisterMEMWB::write() {
-  dataStore = rdIn.read();
-  regDestinyStore = regDestinyIn.read();
+  rdS = rdIn.read();
+  opCodeS = opCodeIn.read();
+  readDataS = readDataIn.read();
+  resultAluS = resultAluIn.read();
 }
