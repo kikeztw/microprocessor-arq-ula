@@ -26,6 +26,7 @@ void RegisterEXMEM::read() {
   rwOut.write(rwStore);
   zeroFlagOut.write(zeroFlagStore);
   ctrlOut.write(ctrlStore);
+  valOut.write(valStore);
 }
 
 void RegisterEXMEM::write() {
@@ -36,4 +37,5 @@ void RegisterEXMEM::write() {
   aluStore = aluIn.read();
   // direccion
   rwStore = rwIn.read();
+  valStore = valIn.read();
 }

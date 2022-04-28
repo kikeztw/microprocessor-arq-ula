@@ -5,7 +5,7 @@
 DataPath::DataPath(sc_module_name name)
     : sc_module(name), adder("sumador"), im("im_"), pc("pc"), re("re_"),
       cu("cu"), reIDEX("re_ifex"), rf("rf_"), adder2("sumador2"), alu("alu"),
-      andBranch("andBranch"), muxCp("muxCp"), reEXMEM("reEXMEm") {
+      andBranch("andBranch"), muxCp("muxCp"), reEXMEM("reEXMEm"), dataMem("dataMem") {
 
   sgRwRb = 0;
   sgWRb = 0;
@@ -53,7 +53,8 @@ DataPath::DataPath(sc_module_name name)
 
   reIDEX.clkIn(clkIn);
   reIDEX.rRg1In(sgRfOut[0]);
-  reIDEX.rRg2In(sgRfOut[0]);
+  reIDEX.rRg2In(sgRfOut[1]); // deberia ser 1
+
   reIDEX.cpIn(Sg_cpOutre);
   reIDEX.immIn(SgValoresInmediatos[0]);
   reIDEX.immIn2(SgValoresInmediatos[1]);
@@ -62,7 +63,7 @@ DataPath::DataPath(sc_module_name name)
   reIDEX.ctrlIn(SgControlOut[0]);
 
   reIDEX.aOut(sgReIDEXValues[0]);
-  reIDEX.bOut(sgReIDEXValues[1]);
+  reIDEX.bOut(sgReIDEXValues[1]);//
   reIDEX.cpOut(sgReIDEXCp);
   reIDEX.tagOut(sgReIDEXTag);
   reIDEX.rwOut(sgReIDEXRw);
@@ -83,16 +84,24 @@ DataPath::DataPath(sc_module_name name)
   reEXMEM.ctrlIn(sgReIDEXCtrl);
   reEXMEM.zeroFlagIn(sgZero);
   reEXMEM.clkIn(clkIn);
+  reEXMEM.valIn(sgReIDEXValues[0]);
 
   reEXMEM.addOut(sgEXMEMaddOut);
   reEXMEM.aluOut(sgEXMEMaluOut);
   reEXMEM.rwOut(sgEXMEMrwOut);
   reEXMEM.ctrlOut(sgEXMEMctrlOut);
   reEXMEM.zeroFlagOut(sgEXMEMzeroFlagOut);
+  reEXMEM.valOut(sgEXMEMval);
 
   andBranch.zeroIn(sgEXMEMzeroFlagOut);
   andBranch.addIn(sgEXMEMaddOut);
   andBranch.sOut(sgBranch);
+
+  dataMem.opCodeIn(sgEXMEMctrlOut);
+  dataMem.addressIn(sgEXMEMaluOut); //  sc_in<sc_uint<32>>
+  dataMem.valueIn(sgEXMEMval); // sc_in<sc_int<32>>
+
+  dataMem.valueOut(sgvalue); // sc_out<sc_int<32>>
 
   SC_METHOD(test);
   sensitive << clkIn.neg();

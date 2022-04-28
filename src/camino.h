@@ -84,11 +84,15 @@ public:
   sc_signal<sc_uint<32>> sgEXMEMaddOut;
   sc_signal<sc_uint<5>> sgEXMEMrwOut, sgEXMEMctrlOut;
   sc_signal<bool> sgEXMEMzeroFlagOut;
+  sc_signal<sc_int<32>> sgEXMEMval;
 
   //=====================CUARTA ETAPA=======================
 
   sc_signal<bool> sgBranch;
+  sc_signal<sc_int<32>> sgvalue; //salida de data memory
 
+
+//========================QUINTA ETAPA=======================
   // modules
   Adder adder;
   InstructioMemory im;
@@ -103,6 +107,7 @@ public:
   Mux muxCp;
   // registros de encauzamiento
   RegisterEXMEM reEXMEM;
+  DataMemory dataMem;
 
 private:
   void log();
