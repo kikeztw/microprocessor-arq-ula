@@ -96,31 +96,33 @@ void DataPath::log()
   std::cout << std::setw(3) << "";
   std::cout << std::setw(3) << clkIn.read();
   std::cout << std::setw(3) << "";
-  std::cout << std::setw(32);
+  //std::cout << std::setw(32);
+
+
 }
 
 
 void DataPath::test()
 {
-  std::cout << "\n============IF============";
+    std::cout << "\n======================IF=============================================";
     log();
-    std::cout << "PC out: " << SgOutPC.read();
+    std::cout << "| PC  | out: " << SgOutPC.read();
     log();
-    std::cout << "adder in: " << SgOutPC.read()  << ", out:" << SgOutadd.read();
+    std::cout << "|ADD-1| in: " << SgOutPC.read()  << ", out:" << SgOutadd.read();
     log();
-    std::cout << "IM in: " << SgOutPC.read() << ", out:" << SgOutim.read();
+    std::cout << "| IM  | in: " << SgOutPC.read() << ", out: " << SgOutim.read();
     log();
-    std::cout << "PC in: " << SgOutadd.read();  
+    std::cout << "| PC  | in: " << SgOutadd.read();  
     log();
-    std::cout << "IF/ID in: (instr:" << SgOutim.read() << ", pc:" << SgOutPC.read() << ")";
+    std::cout << "|IF/ID| in: (instr: " << SgOutim.read() << ", pc: " << SgOutPC.read() << ")";
     
-    std::cout << "\n============ID============";
+    std::cout << "\n======================ID=============================================";
     log();
-    std::cout << "IF/ID out: (instr:" << Sg_stringDOutre.read() << ", pc:" << Sg_cpOutre.read() << ")";
+    std::cout << "|IF/ID| out: (instr: " << Sg_stringDOutre.read() << ", pc:" << Sg_cpOutre.read() << ")";
     log();  
-    std::cout << "CU in: " << Sg_stringDOutre.read();
+    std::cout << "| CU  | in: " << Sg_stringDOutre.read();
       log();  
-    std::cout << "CU out: [sg ctrl:" << SgControlOut[0].read() 
+    std::cout << "| CU  | out: [sg ctrl: " << SgControlOut[0].read() 
     << ", sg rw:"<< SgControlOut[1].read() 
     << ", sg ra:"<< SgControlOut[2].read()
     << ", sg rb:"<< SgControlOut[3].read()
@@ -128,26 +130,27 @@ void DataPath::test()
     << ", sg vi b:" << SgValoresInmediatos[1].read()
     << ", tag: " << SgTagOut.read().str    << "]";
     log();  
-    std::cout << "ID/EX in: [Rg1:"<< sgRfOut[0] << ",Rg2:"<< sgRfOut[1] 
+    std::cout << "|ID/EX| in: [Rg1:"<< sgRfOut[0] << ",Rg2:"<< sgRfOut[1] 
     << ",Inm1:" << SgValoresInmediatos[0].read()  << ",Inm2:" 
     << SgValoresInmediatos[1].read() <<
     ",tag:"<< SgTagOut.read().str  << ",rw:" << SgControlOut[1].read()
       << ",ctrl:" << SgControlOut[0].read() << "]";
-    std::cout << "\n============EX============";
+    std::cout << "\n======================EX=============================================";
     log();
-    std::cout << "ID/EX OUT: [a:"<< sgReIDEXValues[0].read() << ",b:"<< sgReIDEXValues[1].read() 
+    std::cout << "|ID/EX| out: [a:"<< sgReIDEXValues[0].read() << ",b:"<< sgReIDEXValues[1].read() 
     << ",ctrl:" << sgReIDEXCtrl.read() << ",rw:" << sgReIDEXRw.read() << ",tag:" << sgReIDEXTag.read().str
     << "]";
     log();
-    std::cout << "sumador 2 in:" << sgReIDEXTag.read().str << ", out:" << sgAdder2Out;
+    std::cout << "|ADD-2| in:" << sgReIDEXTag.read().str << ", out:" << sgAdder2Out;
     log();
-    std::cout << "ALU in: [a:" << sgReIDEXValues[0] << ",b:" << sgReIDEXValues[1] 
+    std::cout << "| ALU | in: [a:" << sgReIDEXValues[0] << ",b:" << sgReIDEXValues[1] 
     << ",ctrl:" <<  sgReIDEXCtrl << "] out: [r:" << sgResult.read() << ",z:"
     << sgZero.read() << "]";
     
     log();
-    std::cout << "IX/MEM in: [alu:" << sgResult.read() << ",zero:" << sgZero.read()
+    std::cout << "|IX/ME| in: [alu:" << sgResult.read() << ",zero:" << sgZero.read()
     << ",add:" << sgAdder2Out << ",ctrl:" << sgReIDEXCtrl << "]";
+    std::cout << "\n======================FIN DE CICLO==================================\n\n\n";
 }
 
 DataPath::~DataPath() {}

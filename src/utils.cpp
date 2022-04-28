@@ -11,7 +11,9 @@ void sc_trace(sc_trace_file *&tf, const string &trans, std::string nm) {
   sc_trace(tf, trans, nm + ".str");
 } // end trace
 
-
+void clear(){
+    cout << "\x1B[2J\x1B[H";
+}
 
 
 // ------------------------------------------------------ end sobrecarga

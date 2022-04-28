@@ -35,6 +35,8 @@ public:
   friend void sc_trace(sc_trace_file *&tf, const string &trans, std::string nm);
 };
 
+void clear();
+
 // void read(const std::string &path, std::vector<std::string> *L1I,
 //           std::vector<int> *L1D, std::map<std::string, int> *dic,
 //           std::map<std::string, int> *dicB);
