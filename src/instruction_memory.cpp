@@ -2,6 +2,17 @@
 
 InstructioMemory::InstructioMemory(sc_module_name nm) : sc_module(nm) {
   L1_I.push_back("add,x1,x0,5");
+  L1_I.push_back("add,x2,x0,-5");
+  L1_I.push_back("sub,x3,x1,1");
+  L1_I.push_back("beq,x3,1,while");
+  L1_I.push_back("beq,x3,x1,for");
+  L1_I.push_back("bne,x3,1,for");
+  L1_I.push_back("bne,x3,x1,for");
+
+
+  L1_I.push_back("add,x0,x0,x0");
+  L1_I.push_back("add,x0,x0,x0");
+
   /*L1_I.push_back("add,x0,x0,x0");
   L1_I.push_back("lw,x1,x2,5");
   L1_I.push_back("beq,x0,x0,for");

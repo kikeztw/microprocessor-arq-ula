@@ -10,12 +10,19 @@
 
 enum OPCODES {
   NONE,
-  SUM,
+  ADD,
   SUB,
+  BEQ,
+  BNE,
+  BLT,
   DIV,
-  MUL,
+  MOD,
+  MULH,
+  MULL,
   AND,
-  OR
+  OR,
+  LW,
+  SW
 }; // 
 
 class string { // previously as struct

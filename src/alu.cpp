@@ -16,13 +16,41 @@ void ALU::operation() {
       res = dataA || dataB;
       break;
 
-    case SUM:
+    case LW:
+    case SW:
+    case ADD:
       res = dataA + dataB;
       break;
 
     case SUB:
       res = dataA - dataB;
       break;
+
+    case BEQ:
+      res = 1;
+      if(dataA == dataB)
+        res = 0;
+    break;
+
+    case BNE:
+      res = 1;
+      if(dataA != dataB)
+        res = 0;
+    break;
+
+    case BLT:
+      res = 1;
+      if(dataA < dataB)
+        res = 0;
+    break;
+
+    case DIV:
+      res = dataA / dataB;
+    break;
+
+    case MOD:
+      res = dataA % dataB;
+    break;
 
     default:
       res = 0;
