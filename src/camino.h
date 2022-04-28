@@ -3,19 +3,20 @@
 
 // modules
 #include "Adder.h"
+#include "Mux.h"
 #include "adder_2.h"
 #include "alu.h"
+#include "and_branch.h"
 #include "control_unit.h"
+#include "data_memory.h"
 #include "instruction_memory.h"
 #include "pc.h"
 #include "register_file.h"
-#include "and_branch.h"
-#include "Mux.cpp"
-#include "data_memory.h"
 // registro de encauzamiento
 #include "register_ex_mem.h"
 #include "register_id_ex.h"
 #include "register_if_id.h"
+#include "register_mem_wb.h"
 // utils
 #include "utils.h"
 // default
