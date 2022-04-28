@@ -16,6 +16,7 @@ int sc_main(int argc, char **argv) {
   cam.clkIn(clock);
 
   read(path, &cam.im.L1_I, &cam.im.labels, NULL, NULL);
+
   sc_start();
 
   return 0;

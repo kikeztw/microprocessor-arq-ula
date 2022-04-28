@@ -14,7 +14,7 @@
     add, x1, x1, 5
     add, x2, x0, -5
     sub, x3, 5, 1
-    lw,x0,x1,2
+    lw,x0,x1,0
     add,x2,x2,4
   while:  
     beq, t0, t1, fin
