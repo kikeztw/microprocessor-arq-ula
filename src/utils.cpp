@@ -32,6 +32,7 @@ void read(const std::string &path, std::vector<std::string> *L1I,
   while (std::getline(input_file, linea)) {
     std::stringstream stream(linea);
     std::string valor;
+    // std::cout << linea << "\n";
 
     // std::cout << "Contenido de la linea:\n";
     while (std::getline(stream, valor, '\t')) {
@@ -53,7 +54,7 @@ void read(const std::string &path, std::vector<std::string> *L1I,
         // std::cout << valor.find(":") + 1 << std::endl;
         std::stringstream d(valor.substr(valor.find(":") + 1));
         while (std::getline(d, v, ',')) {
-          std::cout << v;
+          // std::cout << v;
           L1D->push_back(std::stoi(v));
           i += 4;
         }
@@ -68,7 +69,8 @@ void read(const std::string &path, std::vector<std::string> *L1I,
         }
         // valor.pop_back();
         // valor.pop_back();
-        L1I->push_back(valor.substr(4));
+        std::cout << valor << "\n";
+        // L1I->push_back(valor.substr(4));
         i++;
       }
     }
