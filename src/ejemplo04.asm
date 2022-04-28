@@ -7,8 +7,8 @@
 #				m = v[i]
 #			i+=1;
 #
-.data
-  v: 56, -2, 50, 423, -15
+#.data
+#  v: 56, -2, 50, 423, -15
 .text
   main:
     addi t0, zero, 1
@@ -25,5 +25,5 @@
     addi t2, t2, 4
     addi t0,t0,1
     beq zero, zero, while
-  fin:  
+  fin:
     jalr zero, ra, 0
