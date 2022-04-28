@@ -6,7 +6,8 @@ Mux::Mux(sc_module_name nm) : sc_module(nm) {
   sensitive << s0In << aIn << bIn;
 }
 
-void Mux::operation() {
+void Mux::operation() 
+{
   /* Trabajar con entradas de varios bits es igual en varios sentidos.
   Lo que verán en ésta función es perfectamente aplicable a entradas de
   cualquier cantidad de bits.
