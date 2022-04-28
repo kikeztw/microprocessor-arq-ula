@@ -72,7 +72,7 @@ void read(const std::string &path, std::vector<std::string> *L1I,
         // valor.pop_back();
         // valor.pop_back();
         // std::cout << valor << "\n";
-        L1I->push_back(valor.substr(4));
+        L1I->push_back(valor);
         i++;
       }
     }
