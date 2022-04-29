@@ -119,6 +119,7 @@ DataPath::DataPath(sc_module_name name)
   muxWB.readDataIn(sgMEMWBdataOut);
   muxWB.resultAluIn(sgMEMWBaluOut);
 
+  muxWB.resultOut(sgResultToRegister);
   SC_METHOD(test);
   sensitive << clkIn.neg();
   dont_initialize();
