@@ -14,6 +14,7 @@ public:
   sc_in<sc_int<32>> resultAluIn;
 
   sc_out<sc_int<32>> resultOut;
+  
 
   SC_CTOR(MuxWB);
 
