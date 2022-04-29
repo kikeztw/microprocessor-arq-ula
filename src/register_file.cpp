@@ -10,7 +10,7 @@ RegisterFile::RegisterFile(sc_module_name nm) : sc_module(nm) {
 
   // Solo se puede leer cuando el reloj están en 1 (clkIn.pos() representa que el reloj está en 1)
   SC_METHOD(read);
-  sensitive << clkIn.pos();
+  sensitive << raIn << rbIn;
 }
 
 void RegisterFile::read()

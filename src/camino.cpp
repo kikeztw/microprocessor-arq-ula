@@ -164,6 +164,14 @@ void DataPath::test() {
             << ", sg vi a:" << SgValoresInmediatos[0].read()
             << ", sg vi b:" << SgValoresInmediatos[1].read()
             << ", tag: " << SgTagOut.read().str << "]";
+
+  log();
+  std::cout << "| RF  | In: ["
+            << ", sg ra:" << SgControlOut[2].read()
+            << ", sg rb:" << SgControlOut[3].read() << "] out:[" 
+            << ", a:" << sgRfOut[0].read()
+            << ", b:" << sgRfOut[1].read()
+            <<  "]";
   log();
   std::cout << "|ID/EX| in: [Rg1:" << sgRfOut[0] << ",Rg2:" << sgRfOut[1]
             << ",Inm1:" << SgValoresInmediatos[0].read()
