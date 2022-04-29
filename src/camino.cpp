@@ -1,5 +1,3 @@
-#include "camino.h"
-
 // static bool stop = true;
 
 DataPath::DataPath(sc_module_name name)
@@ -200,16 +198,16 @@ void DataPath::test() {
   log();
   std::cout << "| PC  | out: " << SgOutPC.read();
   std::cout << "\n======================FIN DE "
-               "CICLO====================================\n";
-  std::cout<<"=================ARCHIVO DE REGISTROS===========================================\n";
+               "CICLO====================================\n\n";
+  std::cout<<"=================ARCHIVO DE REGISTROS============================================================\n";
   std::cout<<"=x00=x01=x02=x03=x04=x05=x06=x07=x08=x09=x10";
   std::cout<<"=x11=x12=x13=x14=x15=x16=x17=x18=x19=x20=x21";
   std::cout<<"=x22=x23=x24=x25=x26=x27=x28=x29=x30=x31=\n=";
   for(short i=0; i<32; i++){
     std::cout<<" "<<rf.registros[i]<<" =";
-}
-
-
+  }
+  std::cout<<"\n=================ARCHIVO DE REGISTROS============================================================\n";
+  std::cout<<"\n\n";
 }
 
 DataPath::~DataPath() {}
