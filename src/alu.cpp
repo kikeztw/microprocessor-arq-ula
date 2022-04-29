@@ -8,52 +8,57 @@ void ALU::operation() {
 
   switch (op.read()) {
 
-    case AND:
-      res = dataA && dataB;
-      break;
-
-    case OR:
-      res = dataA || dataB;
-      break;
-
-    case LW:
-    case SW:
-    case ADD:
-      res = dataA + dataB;
-      break;
-
-    case SUB:
-      res = dataA - dataB;
-      break;
-
-    case BEQ:
-      res = 1;
-      if(dataA == dataB)
-        res = 0;
+  case AND:
+    res = dataA && dataB;
     break;
 
-    case BNE:
-      res = 1;
-      if(dataA != dataB)
-        res = 0;
+  case OR:
+    res = dataA || dataB;
     break;
 
-    case BLT:
-      res = 1;
-      if(dataA < dataB)
-        res = 0;
+  case LW:
+    std::cout << "\nestoy lw: "
+              << "A:" << dataA << " B:" << dataB << "\n";
+    res = dataA + dataB;
     break;
 
-    case DIV:
-      res = dataA / dataB;
+  case SW:
+  case ADD:
+    res = dataA + dataB;
     break;
 
-    case MOD:
-      res = dataA % dataB;
+  case SUB:
+    res = dataA - dataB;
     break;
 
-    default:
+  case BEQ:
+    res = 1;
+    if (dataA == dataB)
       res = 0;
+    break;
+
+  case BNE:
+    res = 1;
+    if (dataA != dataB)
+      res = 0;
+    break;
+
+  case BLT:
+    res = 1;
+    if (dataA < dataB)
+      res = 0;
+    break;
+
+  case DIV:
+    res = dataA / dataB;
+    break;
+
+  case MOD:
+    res = dataA % dataB;
+    break;
+
+  default:
+    res = 0;
     break;
   }
   result.write(res);
