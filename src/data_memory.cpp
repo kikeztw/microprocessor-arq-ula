@@ -9,6 +9,7 @@ DataMemory::DataMemory(sc_module_name nm) : sc_module(nm) {
 void DataMemory::op() {
   auto op_code = opCodeIn.read();
   auto addressIn_ = addressIn.read();
+  auto valueIn_ = valueIn.read();
 
   if (addressIn_ < 0)
     addressIn_ = addressIn_ * -1;
@@ -18,6 +19,8 @@ void DataMemory::op() {
     valueOut.write(L1_D[addressIn_]);
   } else if (op_code == SW) {
     // escribe
-    L1_D[addressIn_] = valueIn.read();
+    std::cout << "\nen DataMemory: ValueIn: " << valueIn_
+              << " addressIn: " << addressIn_ << "\n";
+    L1_D[addressIn_] = valueIn_;
   }
 }

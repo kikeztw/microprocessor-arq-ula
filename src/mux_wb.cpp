@@ -14,6 +14,8 @@ void MuxWB::op() {
   if (op_code == LW) {
     resultOut.write(read_data_in);
     // lee
+  } else if (op_code == SW) {
+    return;
   } else {
     // escribe
     resultOut.write(result_alu_in);
