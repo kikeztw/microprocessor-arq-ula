@@ -17,12 +17,12 @@ void ALU::operation() {
     break;
 
   case LW:
-    std::cout << "\nestoy lw: "
-              << "A:" << dataA << " B:" << dataB << "\n";
     res = dataA + dataB;
     break;
 
   case SW:
+   
+
   case ADD:
     res = dataA + dataB;
     break;
