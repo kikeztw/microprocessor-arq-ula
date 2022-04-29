@@ -11,10 +11,7 @@ void MuxWB::op() {
   auto result_alu_in  = resultAluIn.read();
   
 
-  if(addressIn_ <0 )
-    addressIn_  = addressIn_ * -1;
-  
-   if (op_code == LW || op_code == SW) {
+  if (op_code == LW || op_code == SW) {
     resultOut.write(read_data_in);
     // lee
   } else {
