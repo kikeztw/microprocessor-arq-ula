@@ -95,6 +95,9 @@ public:
   sc_signal<sc_int<32>> sgMEMWBdataOut, sgMEMWBaluOut;
 
   //========================QUINTA ETAPA=======================
+
+  sc_signal<sc_int<32>> sgResultToRegister; // salida
+
   // modules
   Adder adder;
   InstructioMemory im;
@@ -111,6 +114,7 @@ public:
   RegisterEXMEM reEXMEM;
   DataMemory dataMem;
   RegisterMEMWB reMEMWB;
+  MuxWB muxWB;
 
 private:
   void log();

@@ -5,8 +5,8 @@
 DataPath::DataPath(sc_module_name name)
     : sc_module(name), adder("sumador"), im("im_"), pc("pc"), re("re_"),
       cu("cu"), reIDEX("re_ifex"), rf("rf_"), adder2("sumador2"), alu("alu"),
-      andBranch("andBranch"), muxCp("muxCp"), reEXMEM("reEXMEm"), dataMem("dataMem")
-      , reMEMWB("reMEMWB") {
+      andBranch("andBranch"), muxCp("muxCp"), reEXMEM("reEXMEm"),
+      dataMem("dataMem"), reMEMWB("reMEMWB"), muxWB("mux_ultima_etapa") {
 
   sgRwRb = 0;
   sgWRb = 0;
@@ -64,7 +64,7 @@ DataPath::DataPath(sc_module_name name)
   reIDEX.ctrlIn(SgControlOut[0]);
 
   reIDEX.aOut(sgReIDEXValues[0]);
-  reIDEX.bOut(sgReIDEXValues[1]);//
+  reIDEX.bOut(sgReIDEXValues[1]); //
   reIDEX.cpOut(sgReIDEXCp);
   reIDEX.tagOut(sgReIDEXTag);
   reIDEX.rwOut(sgReIDEXRw);
@@ -100,7 +100,7 @@ DataPath::DataPath(sc_module_name name)
 
   dataMem.opCodeIn(sgEXMEMctrlOut);
   dataMem.addressIn(sgEXMEMaluOut); //  sc_in<sc_uint<32>>
-  dataMem.valueIn(sgEXMEMval); // sc_in<sc_int<32>>
+  dataMem.valueIn(sgEXMEMval);      // sc_in<sc_int<32>>
 
   dataMem.valueOut(sgvalue); // sc_out<sc_int<32>>
 
@@ -115,6 +115,9 @@ DataPath::DataPath(sc_module_name name)
   reMEMWB.readDataOut(sgMEMWBdataOut);
   reMEMWB.resultAluOut(sgMEMWBaluOut);
 
+  muxWB.opCodeIn(sgMEMWBCtrlOut);
+  muxWB.readDataIn(sgMEMWBdataOut);
+  muxWB.resultAluIn(sgMEMWBaluOut);
 
   SC_METHOD(test);
   sensitive << clkIn.neg();
