@@ -91,12 +91,12 @@ public:
 
   sc_signal<bool> sgBranch;
   sc_signal<sc_int<32>> sgvalue; // salida de data memory
-  sc_signal<sc_uint<5>> sgMEMWBrdOut, sgMEMWBCtrlOut;
+  sc_signal<sc_uint<5>> sgMEMWBCtrlOut;
   sc_signal<sc_int<32>> sgMEMWBdataOut, sgMEMWBaluOut;
 
   //========================QUINTA ETAPA=======================
 
-  sc_signal<sc_int<32>> sgResultToRegister; // salida
+  //sc_signal<sc_int<32>> sgResultToRegister; // salida
 
   // modules
   Adder adder;

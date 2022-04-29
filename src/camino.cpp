@@ -110,7 +110,7 @@ DataPath::DataPath(sc_module_name name)
   reMEMWB.readDataIn(sgvalue);
   reMEMWB.resultAluIn(sgEXMEMaluOut);
 
-  reMEMWB.rdOut(sgMEMWBrdOut);
+  reMEMWB.rdOut(sgRwRb);
   reMEMWB.opCodeOut(sgMEMWBCtrlOut);
   reMEMWB.readDataOut(sgMEMWBdataOut);
   reMEMWB.resultAluOut(sgMEMWBaluOut);
@@ -119,7 +119,8 @@ DataPath::DataPath(sc_module_name name)
   muxWB.readDataIn(sgMEMWBdataOut);
   muxWB.resultAluIn(sgMEMWBaluOut);
 
-  muxWB.resultOut(sgResultToRegister);
+  muxWB.resultOut(sgWRb);
+
   SC_METHOD(test);
   sensitive << clkIn.neg();
   dont_initialize();
@@ -190,6 +191,12 @@ void DataPath::test() {
   std::cout << "|IX/ME| in: [alu:" << sgResult.read()
             << ",zero:" << sgZero.read() << ",add:" << sgAdder2Out
             << ",ctrl:" << sgReIDEXCtrl << "]";
+  std::cout << "\n======================FIN DE "
+               "CICLO====================================\n\n\n";
+  log();
+  std::cout << "|MEM/RW| in: [rw:" << sgEXMEMrwOut.read()
+            << ",data:" << sgvalue.read() << ",alu:" << sgEXMEMaluOut.read()
+            << ",ctrl:" << sgEXMEMctrlOut.read() << "]";
   std::cout << "\n======================FIN DE "
                "CICLO====================================\n\n\n";
 }
