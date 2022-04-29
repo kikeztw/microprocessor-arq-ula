@@ -19,6 +19,6 @@ void MuxWB::op() {
     // lee
   } else {
     // escribe
-    L1_D[addressIn_] = valueIn.read();
+    resultOut.write(read_data_in);
   }
 }
