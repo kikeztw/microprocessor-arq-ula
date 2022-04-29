@@ -11,11 +11,14 @@
 #  v: 56, -2, 50, 423, -15
 .text
   main:
-    add, x1, x1, 5
+    add, x1, x0, 5
     add, x2, x0, -5
     sub, x3, 5, 1
-    lw,x0,x1,0
-    add,x2,x2,4
+    add, x6, x0, 10
+    add, x8, x0, 15
+    add, x7, x0, 8
+    add,x5,x1,x2 
+    add,x2,x2,x1 
   while:  
     beq, x0, x1, fin
     beq, x0, 1, fin
