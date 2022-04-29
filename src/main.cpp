@@ -6,7 +6,7 @@ int sc_main(int argc, char **argv) {
   clear();
 
   std::cout << "\n\nIniciando simulador...\n\n\n";
-  std::string path = "./ejemplo03.asm";
+  std::string path = "./ejemplo04.asm";
   sc_time period(10, SC_NS);
   sc_time delay(10, SC_NS);
 

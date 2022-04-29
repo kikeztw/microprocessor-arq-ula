@@ -19,8 +19,8 @@ void DataMemory::op() {
     valueOut.write(L1_D[addressIn_]);
   } else if (op_code == SW) {
     // escribe
-    std::cout << "\nen DataMemory: ValueIn: " << valueIn_
-              << " addressIn: " << addressIn_ << "\n";
+    // std::cout << "\nen DataMemory: ValueIn: " << valueIn_
+    // << " addressIn: " << addressIn_ << "\n";
     L1_D[addressIn_] = valueIn_;
   }
 }
