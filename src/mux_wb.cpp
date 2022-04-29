@@ -10,8 +10,8 @@ void MuxWB::op() {
   auto read_data_in = readDataIn.read();
   auto result_alu_in = resultAluIn.read();
 
-  if (op_code == LW || op_code == SW) {
-    resultOut.write
+  if (op_code == LW) {
+    resultOut.write(read_data_in);
     // lee
   } else {
     // escribe
