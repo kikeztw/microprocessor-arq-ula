@@ -10,6 +10,7 @@
 #include "control_unit.h"
 #include "data_memory.h"
 #include "instruction_memory.h"
+#include "mux_wb.h"
 #include "pc.h"
 #include "register_file.h"
 // registro de encauzamiento
@@ -89,11 +90,11 @@ public:
   //=====================CUARTA ETAPA=======================
 
   sc_signal<bool> sgBranch;
-  sc_signal<sc_int<32>> sgvalue; //salida de data memory
+  sc_signal<sc_int<32>> sgvalue; // salida de data memory
   sc_signal<sc_uint<5>> sgMEMWBrdOut, sgMEMWBCtrlOut;
   sc_signal<sc_int<32>> sgMEMWBdataOut, sgMEMWBaluOut;
 
-//========================QUINTA ETAPA=======================
+  //========================QUINTA ETAPA=======================
   // modules
   Adder adder;
   InstructioMemory im;
