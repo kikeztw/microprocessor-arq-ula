@@ -18,9 +18,9 @@ class RegisterFile: public sc_module {
     sc_out<sc_int<32>> aOut;
     sc_out<sc_int<32>> bOut;
     sc_int<32> registros[32];
-
-    private:
     void read();
+    private:
+    
     void write();
 
 };
