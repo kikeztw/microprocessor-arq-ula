@@ -9,7 +9,7 @@
 class MuxWB : public sc_module {
 public:
   
-  sc_in<sc_uint<5>> opCodeOut;
+  sc_in<sc_uint<5>> opCodeIn;
   sc_in<sc_int<32>> readDataIn;
   sc_in<sc_int<32>> resultAluIn;
 

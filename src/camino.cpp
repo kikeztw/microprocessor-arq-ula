@@ -104,6 +104,7 @@ DataPath::DataPath(sc_module_name name)
 
   dataMem.valueOut(sgvalue); // sc_out<sc_int<32>>
 
+  reMEMWB.clkIn(clkIn);
   reMEMWB.rdIn(sgEXMEMrwOut);
   reMEMWB.opCodeIn(sgEXMEMctrlOut);
   reMEMWB.readDataIn(sgvalue);
