@@ -3,7 +3,7 @@
 DataMemory::DataMemory(sc_module_name nm) : sc_module(nm) {
   L1_D.reserve(100);
   SC_METHOD(op)
-  sensitive << opCodeIn;
+  sensitive << opCodeIn << addressIn;
 }
 
 void DataMemory::op() {
