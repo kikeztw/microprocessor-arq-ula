@@ -217,6 +217,7 @@ void DataPath::test() {
   }
   std::cout<<"\n=================ARCHIVO DE REGISTROS============================================================\n";
   std::cout<<"\n\n";
+  for(int i=0 ; i<3 ; i++)std::cout<<dataMem.L1_D[i]<<" ";
 }
 
 DataPath::~DataPath() {}
