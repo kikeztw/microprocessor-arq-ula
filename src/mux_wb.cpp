@@ -15,9 +15,9 @@ void MuxWB::op() {
     addressIn_  = addressIn_ * -1;
   
    if (op_code == LW || op_code == SW) {
-    resultOut.write();
+    resultOut.write(read_data_in);
     // lee
-  } else if (op_code ) {
+  } else {
     // escribe
     L1_D[addressIn_] = valueIn.read();
   }
