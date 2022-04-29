@@ -59,7 +59,7 @@ void read(const std::string &path, std::vector<std::string> *L1I,
           i += 4;
         }
 
-        dicB->insert({valor.substr(2, valor.find(":")), i});
+        // dicB->insert({valor.substr(2, valor.find(":")), i});
       }
 
       if (_text && L1I != NULL) {
