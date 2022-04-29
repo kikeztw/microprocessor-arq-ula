@@ -17,6 +17,12 @@ int sc_main(int argc, char **argv) {
 
   read(path, &cam.im.L1_I, &cam.im.labels, &cam.dataMem.L1_D, NULL);
 
+  std::vector<int> *a = &cam.dataMem.L1_D;
+
+  for (auto g : *(a)) {
+    std::cout << "dato: " << g << "\n";
+  }
+
   sc_start();
 
   return 0;

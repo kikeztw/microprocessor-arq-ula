@@ -1,7 +1,8 @@
+.data
+  v: 12,21,23
 .text
   main:
-    add, x1, x0, 5
-    add, x2, x0, -5
-    sub, x3, 5, 1
-    add, x6, x0, 10
-    add, x8, x0, 15
+    lw, x1, x0, 1
+    add, x2, x5, 6
+    add, x3, x6, 7
+
