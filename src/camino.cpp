@@ -1,3 +1,4 @@
+#include "camino.h"
 // static bool stop = true;
 
 DataPath::DataPath(sc_module_name name)
