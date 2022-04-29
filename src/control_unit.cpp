@@ -80,8 +80,9 @@ void ControlUnit::readInstruction() {
   std::vector<std::string> parts;
   // separamos el string en 4 strings
   parts = split(instruction, ',');
+  int size = Dic.size();
   // Aignamos en data[0] que instruccion vamos a hacer
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < size; i++) {
     if (compareString(parts[0], Dic[i]) == 1) {
 
       data[0] = i + 1;
