@@ -19,6 +19,6 @@ void MuxWB::op() {
     // lee
   } else {
     // escribe
-    resultOut.write(read_data_in);
+    resultOut.write(read_alu_in);
   }
 }
