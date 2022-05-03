@@ -22,6 +22,7 @@ void Register::assambly() {
   for (int i = 0; i < 32; i++) {
     wSg[i] = wIn.read()[i];
     tmp[i] = dataSg[i];
+    celdaS[i] = tmp[i];
     // celdas[i]
     //   aSg[i] = aIn.read()[i];
     //   bSg[i] = bIn.read()[i];

@@ -14,10 +14,10 @@ public:
   SC_CTOR(Register);
 
   sc_vector<Cell> celdas;
+  sc_int<32> celdaS;
 
 private:
   // sc_signal<bool>
-
   void assambly();
   sc_signal<bool> wSg[32], dataSg[32];
 };
