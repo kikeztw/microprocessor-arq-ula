@@ -11,7 +11,7 @@ void InstructioMemory::read() {
   auto addres = address.read();
   std::string block;
 
-  if (addres >= (L1_I.size() + 4))
+  if (addres >= (L1_I.size() + 5))
     sc_stop();
 
   // busca el bloque si no esta, no devuelve nada
