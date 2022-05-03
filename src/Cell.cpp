@@ -6,7 +6,7 @@ Cell::Cell(sc_module_name nm) : sc_module(nm) {
   // Solo se puede escribir cuando el reloj está en 0 (clkIn.neg() representa 
   // ue el reloj está en 0)
   SC_METHOD(write);
-  sensitive << clkIn.neg();
+  sensitive << clkIn.neg() << wIn;
 
   // Solo se puede leer cuando el reloj están en 1 (clkIn.pos() representa que 
   // l reloj está en 1)
