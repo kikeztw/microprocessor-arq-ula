@@ -5,7 +5,7 @@ Register::Register(sc_module_name nm) : sc_module(nm), celdas("_celdas", 32) {
   for (short i = 0; i < 32; i++) {
     celdas[i].clkIn(clkIn);
     celdas[i].storage = 0;
-    celdas[i].weIn(weIn);
+    // celdas[i].weIn(weIn);
     celdas[i].wIn(wSg[i]);
     celdas[i].dataOut(dataSg[i]);
   }
@@ -18,7 +18,7 @@ Register::Register(sc_module_name nm) : sc_module(nm), celdas("_celdas", 32) {
 }
 
 void Register::assambly() {
-  sc_uint<32> tmp;
+  sc_int<32> tmp;
   for (int i = 0; i < 32; i++) {
     wSg[i] = wIn.read()[i];
     tmp[i] = dataSg[i];
@@ -27,6 +27,7 @@ void Register::assambly() {
     //   bSg[i] = bIn.read()[i];
     //   tmp[i] = cSg[i].read();
   }
+  std::cout << "assambly: " << tmp << std::endl;
   wOut.write(tmp);
   // cOut.write(tmp);
 }
