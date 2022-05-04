@@ -9,6 +9,7 @@
     add x0, x0, x0
     add x0, x0, x0
     add x0, x0, x0
+  while:
     sw x3, 1(x7)
     sub x5, x4, x3
     add x8, x2, x3

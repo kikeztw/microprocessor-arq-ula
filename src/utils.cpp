@@ -63,7 +63,6 @@ void read(const std::string &path, std::vector<std::string> *L1I,
       }
 
       if (_text && L1I != NULL) {
-        i = 0;
         if (valor[valor.find(":")] == ':') {
           (*dic).insert({valor.substr(2, valor.find(":")), i});
           continue;
