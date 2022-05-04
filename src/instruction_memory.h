@@ -26,9 +26,9 @@ public:
 
   // dato que me va a ayudar a decodificar direccion de memoria para cada una de
   // los datos en memoria
-  std::map<std::string, int> *pointer_l1D = NULL;
 
 private:
+  std::map<std::string, int> *pointer_l1D = NULL;
   void read();
 };
 #endif // !PC_H
