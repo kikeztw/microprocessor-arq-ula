@@ -6,7 +6,7 @@ int sc_main(int argc, char **argv) {
   clear();
 
   std::cout << "\n\nIniciando simulador...\n\n\n";
-  std::string path = "./ejemplo06.asm";
+  std::string path = "./ejemplo04.asm";
   sc_time period(10, SC_NS);
   sc_time delay(10, SC_NS);
 
@@ -18,9 +18,13 @@ int sc_main(int argc, char **argv) {
   read(path, &cam.im.L1_I, &cam.im.labels, &cam.dataMem.L1_D, NULL);
 
   std::vector<int> *a = &cam.dataMem.L1_D;
-
+  std::map<std::string, int> *aux_ = &cam.im.labels;
   for (auto g : *(a)) {
     std::cout << "dato: " << g << "\n";
+  }
+  for (auto aux : *aux_) {
+    std::cout << "etiqueta: " << aux.first << "posicion: " << aux.second
+              << std::endl;
   }
 
   sc_start();

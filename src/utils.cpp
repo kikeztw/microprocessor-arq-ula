@@ -56,22 +56,24 @@ void read(const std::string &path, std::vector<std::string> *L1I,
         while (std::getline(d, v, ',')) {
           // std::cout << v;
           L1D->push_back(std::stoi(v));
-          i += 4;
+          i += 1;
         }
 
         // dicB->insert({valor.substr(2, valor.find(":")), i});
       }
 
       if (_text && L1I != NULL) {
+        i = 0;
         if (valor[valor.find(":")] == ':') {
           (*dic).insert({valor.substr(2, valor.find(":")), i});
           continue;
         }
 
-        //valor.erase(std::remove(valor.begin(), valor.end(), ' '), valor.end());
-        // valor.pop_back();
-        // valor.pop_back();
-        // std::cout << valor << "\n";
+        // valor.erase(std::remove(valor.begin(), valor.end(), ' '),
+        // valor.end());
+        //  valor.pop_back();
+        //  valor.pop_back();
+        //  std::cout << valor << "\n";
         L1I->push_back(valor);
         i++;
       }
