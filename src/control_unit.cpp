@@ -77,9 +77,23 @@ void ControlUnit::readInstruction() {
   // Destino  2. Primer dato  3. Segundo dato
   std::vector<std::string> Dic = {"add", "sub", "beq", "bne", "blt",
   "div", "mod", "mulh", "mull", "and", "or", "lw","sw" };
-  std::vector<std::string> parts;
+  std::vector<std::string> parts, parts1;
   // separamos el string en 4 strings
-  parts = split(instruction, ',');
+
+  std::regex re("[\\s|,())]");
+  std::sregex_token_iterator first{instruction.begin(), instruction.end(), re, -1}, last;//the '-1' is what makes the regex split (-1 := what was not matched)
+  std::vector<std::string> tokens{first, last};
+
+  for(auto i: tokens){
+    if(!i.empty()){
+      parts.push_back(i);
+    }
+  }
+
+  std::cout << "\ntest:";
+  for(int i=0;i<parts.size(); i++)
+    std::cout << parts[i] << ",";
+
   int size = Dic.size();
   // Aignamos en data[0] que instruccion vamos a hacer
   for (int i = 0; i < size; i++) {

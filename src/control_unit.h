@@ -6,6 +6,7 @@
 #include <vector>
 #include <sstream>
 #include <string>
+#include <regex>
 
 class ControlUnit : public sc_module {
 public:
