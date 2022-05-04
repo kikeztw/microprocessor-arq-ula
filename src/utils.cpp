@@ -43,6 +43,7 @@ void read(const std::string &path, std::vector<std::string> *L1I,
       }
 
       if (valor == ".text") {
+        i = 0;
         _text = true;
         _data = false;
         continue;
@@ -64,6 +65,7 @@ void read(const std::string &path, std::vector<std::string> *L1I,
 
       if (_text && L1I != NULL) {
         if (valor[valor.find(":")] == ':') {
+          // std::cout << "i: " << i << std::endl;
           (*dic).insert({valor.substr(2, valor.find(":")), i});
           continue;
         }

@@ -28,7 +28,7 @@ void InstructioMemory::read() {
   // traduce las etiquetas de salto en valores de posiciones
   std::string::size_type n;
   for (auto &pair : labels) {
-    n = block.find(pair.first.substr(0, pair.first.size() - 1));
+    n = block.find(pair.first /* .substr(0, pair.first.size() - 1) */);
     std::cout << "\npair.first: " << pair.first.substr(0, pair.first.size() - 1)
               << " block: " << block << "\n";
     if (n != std::string::npos) {
