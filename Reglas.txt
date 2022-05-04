@@ -1,0 +1,19 @@
+REGLAS:
+1. Compilar con make desde /src
+
+REGLAS ASAMBLE:
+
+1. Colocar etiquetas .data & .text sin tabulacion
+
+2. Colocar el vector y el .main con 1 tabulacion
+
+3. Colocar las isntrucciones con 2 tabulaciones
+
+4. las isntrucciones deben seguir el siguiente formato (add, x5, x6, x7)
+
+5. la instruccion addi funciona con la palabra add, en el tercer dato, si detecta x es un registro (add)
+y si no es un valor entero (addi)
+
+6. En la instruccion lw (lw, x4, x0, 2) x4 es el registro destino, x0 es el vector en L1, y 2 es la posicion del vector
+			
+7. En la instruccion sw (sw, x0, x9, 2) x0 es el vector en l1, x9 ubicacion del dato que usaremos, y 2 la posicion del vector donde escribiremos
