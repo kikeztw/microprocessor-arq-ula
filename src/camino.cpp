@@ -64,6 +64,7 @@ DataPath::DataPath(sc_module_name name)
 
   reIDEX.aOut(sgReIDEXValues[0]);
   reIDEX.bOut(sgReIDEXValues[1]); //
+  reIDEX.vOut(sgReIDEXValues[2]); //
   reIDEX.cpOut(sgReIDEXCp);
   reIDEX.tagOut(sgReIDEXTag);
   reIDEX.rwOut(sgReIDEXRw);
@@ -84,7 +85,7 @@ DataPath::DataPath(sc_module_name name)
   reEXMEM.ctrlIn(sgReIDEXCtrl);
   reEXMEM.zeroFlagIn(sgZero);
   reEXMEM.clkIn(clkIn);
-  reEXMEM.valIn(sgReIDEXValues[0]);
+  reEXMEM.valIn(sgReIDEXValues[2]);
 
   reEXMEM.addOut(sgEXMEMaddOut);
   reEXMEM.aluOut(sgEXMEMaluOut);
@@ -194,9 +195,16 @@ void DataPath::test() {
             << "] out: [r:" << sgResult.read() << ",z:" << sgZero.read() << "]";
 
   log();
-  std::cout << "|IX/ME| in: [alu:" << sgResult.read()
+  std::cout << "|IX/MEM| in: [alu:" << sgResult.read()
             << ",zero:" << sgZero.read() << ",add:" << sgAdder2Out
             << ",ctrl:" << sgReIDEXCtrl << "]";
+
+  std::cout << "\n======================MEM====================================="
+               "========";
+  log();
+  std::cout << "|DATAM| in: [ctrl:" << sgEXMEMctrlOut.read()
+            << ",rw:" << sgEXMEMrwOut.read() << ",valor:" << sgEXMEMval.read()
+            << "]";
   std::cout << "\n======================WB====================================="
                "========";
   log();

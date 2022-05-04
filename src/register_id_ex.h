@@ -16,7 +16,7 @@ public:
   sc_in<sc_uint<32>> cpIn;
   sc_in<sc_uint<5>> rwIn, ctrlIn;
   // output
-  sc_out<sc_int<32>> aOut, bOut;
+  sc_out<sc_int<32>> aOut, bOut, vOut;
   sc_out<sc_uint<32>> cpOut;
   sc_out<string> tagOut;
   sc_out<sc_uint<5>> rwOut, ctrlOut;
@@ -24,7 +24,7 @@ public:
   SC_CTOR(RegisterIDEX);
 private:
   std::string tagStore;
-  sc_int<32> aStore, bStore;
+  sc_int<32> aStore, bStore, vStore;
   sc_uint<32> cpStore;
   sc_uint<5> rwStore, ctrlStore;
 

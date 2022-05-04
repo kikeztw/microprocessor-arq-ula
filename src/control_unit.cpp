@@ -11,34 +11,54 @@ void ControlUnit::operation() {
   flush();
   // no se puede usar 0 como valor inmediato; se debe usar el registro x0
   controlOut.write(data[0]);
-  if (data[5] == 2) {
-    string tmp;
-    tmp.str = tag;
-    tagOut.write(tmp);
-    raOut.write(data[1]);
-    // si tiene valor inmediato que sea en el segundo operando
-    if (data[4] == 0)
-      rbOut.write(data[2]);
-    else {
-      rbOut.write(0);
+
+  string tmp;
+
+
+    switch (data[0])
+    {
+    //save word
+    case SW:
+      raOut.write(data[1]);
       bOut.write(data[2]);
-    }
-  } else {
-    rwOut.write(data[1]);
-    if (data[4] == 0)
-      raOut.write(data[2]);
-    else {
-      raOut.write(0);
-      aOut.write(data[2]);
+      rbOut.write(data[3]);
+    break;
+
+    //salto
+    case 3:
+    case 4:
+    case 5:
+      tmp.str = tag;
+      tagOut.write(tmp);
+      raOut.write(data[1]);
+      // si tiene valor inmediato que sea en el segundo operando
+      if (data[4] == 0)
+        rbOut.write(data[2]);
+      else {
+        rbOut.write(0);
+        bOut.write(data[2]);
+      }
+
+      break;
+    // noramles
+    default:
+      rwOut.write(data[1]);
+      if (data[4] == 0)
+        raOut.write(data[2]);
+      else {
+        raOut.write(0);
+        aOut.write(data[2]);
+      }
+
+      if (data[5] == 0)
+        rbOut.write(data[3]);
+      else {
+        rbOut.write(0);
+        bOut.write(data[3]);
+      }
+      break;
     }
 
-    if (data[5] == 0)
-      rbOut.write(data[3]);
-    else {
-      rbOut.write(0);
-      bOut.write(data[3]);
-    }
-  }
 }
 
 void ControlUnit::flush() {
@@ -90,9 +110,9 @@ void ControlUnit::readInstruction() {
     }
   }
 
-  std::cout << "\ntest:";
-  for(int i=0;i<parts.size(); i++)
-    std::cout << parts[i] << ",";
+  // std::cout << "\ntest:";
+  // for(int i=0;i<parts.size(); i++)
+  //   std::cout << parts[i] << ",";
 
   int size = Dic.size();
   // Aignamos en data[0] que instruccion vamos a hacer
@@ -128,7 +148,6 @@ void ControlUnit::readInstruction() {
   // si es salto
   if (data[0] == 3 || data[0] == 4 || data[0] == 5) {
     data[5] = 2;
-    //data[4] = 0;
     tag = parts[3];
   } else {
     // Quitamos la x del dato 2

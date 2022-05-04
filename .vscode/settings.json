@@ -51,6 +51,11 @@
     "streambuf": "cpp",
     "cinttypes": "cpp",
     "typeindex": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "chrono": "cpp",
+    "condition_variable": "cpp",
+    "ratio": "cpp",
+    "regex": "cpp",
+    "shared_mutex": "cpp"
   }
 }

@@ -21,7 +21,7 @@ void ALU::operation() {
     break;
 
   case SW:
-    res = dataB;
+    res = dataB + dataA;
     break;
   case ADD:
     res = dataA + dataB;

@@ -4,6 +4,7 @@ RegisterIDEX::RegisterIDEX(sc_module_name nm) : sc_module(nm) {
   tagStore = "";
   aStore = 0;
   bStore = 0;
+  vStore = 0;
   cpStore = 0;
   rwStore = 0;
   ctrlStore = 0;
@@ -20,8 +21,8 @@ RegisterIDEX::RegisterIDEX(sc_module_name nm) : sc_module(nm) {
 }
 
 void RegisterIDEX::read() {
-  string temptag;
 
+  string temptag;
   // tag
   temptag.set(tagStore);
   tagOut.write(temptag);
@@ -31,6 +32,7 @@ void RegisterIDEX::read() {
   //valores
   aOut.write(aStore);
   bOut.write(bStore);
+  vOut.write(vStore);
   //direccion de registro de guardado
   rwOut.write(rwStore);
   
@@ -53,7 +55,15 @@ void RegisterIDEX::write() {
     bStore = immIn2.read();
   // direccion
   rwStore = rwIn.read();
-
   ctrlStore = ctrlIn.read();
+
+  vStore = 0;
+
+  if(ctrlIn.read() == SW)
+  {
+    vStore = rRg1In.read();
+    aStore = rRg2In.read();
+    bStore = immIn2.read();
+  }
 
 }
