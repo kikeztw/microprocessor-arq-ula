@@ -45,7 +45,8 @@ void RegisterFile::write() {
 
   // weIn = true;
   auto addresW = rwIn.read();
-
+  if (addresW == 0)
+    return;
   wInSg[addresW] = wIn.read();
 }
 
