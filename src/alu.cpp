@@ -45,7 +45,7 @@ void ALU::operation() {
 
   case BLT:
     res = 1;
-    if (dataA <= dataB)
+    if (dataA < dataB)
       res = 0;
     break;
 
