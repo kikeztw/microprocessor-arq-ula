@@ -1,14 +1,15 @@
 .data
-  v: 12,21,23
-.text
+  v: 15,12,22,
   main:
-    add x5, x0, 20
+    lw x9, 4(0)
+    add x0, x0, 0
+    add x0, x0, 0
+    add x0, x0, 0
+    add x5, x9, 8
+    add x0, x0, 0
+    add x0, x0, 0
+    add x0, x0, 0
   while:
     add x3, x3, 1
-    add x0, x0, 0
-    add x0, x0, 0
-    add x0, x0, 0
     bne x3, x5, while
-    sw x3, 0(0)
-    add x10, x5, 1
-    add x11, x5, 2
+    sw x3, 16(0)

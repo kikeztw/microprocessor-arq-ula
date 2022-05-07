@@ -17,10 +17,12 @@ void ALU::operation() {
     break;
 
   case LW:
+    dataA=dataA/4;
     res = dataA + dataB;
     break;
 
   case SW:
+    dataB=dataB/4;
     res = dataB + dataA;
     break;
   case ADD:
