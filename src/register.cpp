@@ -11,7 +11,7 @@ Register::Register(sc_module_name nm) : sc_module(nm), celdas("_celdas", 32) {
   }
 
   SC_METHOD(assambly);
-  sensitive << wOut << wIn;
+  sensitive /* << wOut  */ << wIn;
   for (short i{}; i < 32; i++) {
     sensitive /* << wSg[i]  */ << dataSg[i];
   }
@@ -22,12 +22,15 @@ void Register::assambly() {
   for (int i = 0; i < 32; i++) {
     wSg[i] = wIn.read()[i];
     tmp[i] = dataSg[i];
-    celdaS[i] = tmp[i];
     // celdas[i]
     //   aSg[i] = aIn.read()[i];
     //   bSg[i] = bIn.read()[i];
     //   tmp[i] = cSg[i].read();
   }
+  // if (tmp == 0) {
+  //   return;
+  // }
+  celdaS = tmp;
   std::cout << "assambly: " << tmp << std::endl;
   wOut.write(tmp);
   // cOut.write(tmp);

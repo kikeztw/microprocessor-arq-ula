@@ -14,6 +14,7 @@ public:
   SC_CTOR(Register);
 
   sc_vector<Cell> celdas;
+
   sc_int<32> celdaS;
 
 private:

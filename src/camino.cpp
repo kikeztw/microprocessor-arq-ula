@@ -199,8 +199,9 @@ void DataPath::test() {
             << ",zero:" << sgZero.read() << ",add:" << sgAdder2Out
             << ",ctrl:" << sgReIDEXCtrl << "]";
 
-  std::cout << "\n======================MEM====================================="
-               "========";
+  std::cout
+      << "\n======================MEM====================================="
+         "========";
   log();
   std::cout << "|DATAM| in: [ctrl:" << sgEXMEMctrlOut.read()
             << ",rw:" << sgEXMEMrwOut.read() << ",valor:" << sgEXMEMval.read()
@@ -228,7 +229,8 @@ void DataPath::test() {
                "REGISTROS======================================================"
                "======\n";
   std::cout << "\n\nL1 Datos: ";
-  for (int i = 0; i < 3; i++)
+  int tam = dataMem.L1_D.size();
+  for (int i = 0; i < tam; i++)
     std::cout << dataMem.L1_D[i] << " ";
 }
 

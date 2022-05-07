@@ -14,51 +14,48 @@ void ControlUnit::operation() {
 
   string tmp;
 
-
-    switch (data[0])
-    {
-    //save word
-    case SW:
-      raOut.write(data[1]);
-      bOut.write(data[2]);
-      rbOut.write(data[3]);
+  switch (data[0]) {
+  // save word
+  case SW:
+    raOut.write(data[1]);
+    bOut.write(data[2]);
+    rbOut.write(data[3]);
     break;
 
-    //salto
-    case 3:
-    case 4:
-    case 5:
-      tmp.str = tag;
-      tagOut.write(tmp);
-      raOut.write(data[1]);
-      // si tiene valor inmediato que sea en el segundo operando
-      if (data[4] == 0)
-        rbOut.write(data[2]);
-      else {
-        rbOut.write(0);
-        bOut.write(data[2]);
-      }
-
-      break;
-    // noramles
-    default:
-      rwOut.write(data[1]);
-      if (data[4] == 0)
-        raOut.write(data[2]);
-      else {
-        raOut.write(0);
-        aOut.write(data[2]);
-      }
-
-      if (data[5] == 0)
-        rbOut.write(data[3]);
-      else {
-        rbOut.write(0);
-        bOut.write(data[3]);
-      }
-      break;
+  // salto
+  case 3:
+  case 4:
+  case 5:
+    tmp.str = tag;
+    tagOut.write(tmp);
+    raOut.write(data[1]);
+    // si tiene valor inmediato que sea en el segundo operando
+    if (data[4] == 0)
+      rbOut.write(data[2]);
+    else {
+      rbOut.write(0);
+      bOut.write(data[2]);
     }
 
+    break;
+  // noramles
+  default:
+    rwOut.write(data[1]);
+    if (data[4] == 0)
+      raOut.write(data[2]);
+    else {
+      raOut.write(0);
+      aOut.write(data[2]);
+    }
+
+    if (data[5] == 0)
+      rbOut.write(data[3]);
+    else {
+      rbOut.write(0);
+      bOut.write(data[3]);
+    }
+    break;
+  }
 }
 
 void ControlUnit::flush() {
@@ -80,7 +77,8 @@ void ControlUnit::readInstruction() {
   std::string instruction = sIn.read().str;
 
   if (instruction == "") {
-    data[0] = 0; // entonces pondemos la instruccion addi,x0,zero,1 que no hace nada
+    data[0] =
+        0; // entonces pondemos la instruccion addi,x0,zero,1 que no hace nada
     data[1] = 0;
     data[2] = 0;
     data[3] = 0;
@@ -95,17 +93,21 @@ void ControlUnit::readInstruction() {
 
   // data hace referencia a 4 resultados, 0. Instruccion  1. Registro
   // Destino  2. Primer dato  3. Segundo dato
-  std::vector<std::string> Dic = {"add", "sub", "beq", "bne", "blt",
-  "div", "mod", "mulh", "mull", "and", "or", "lw","sw" };
+  std::vector<std::string> Dic = {"add", "sub", "beq",  "bne",  "ble",
+                                  "div", "mod", "mulh", "mull", "and",
+                                  "or",  "lw",  "sw"};
   std::vector<std::string> parts, parts1;
   // separamos el string en 4 strings
 
   std::regex re("[\\s|,())]");
-  std::sregex_token_iterator first{instruction.begin(), instruction.end(), re, -1}, last;//the '-1' is what makes the regex split (-1 := what was not matched)
+  std::sregex_token_iterator first{instruction.begin(), instruction.end(), re,
+                                   -1},
+      last; // the '-1' is what makes the regex split (-1 := what was not
+            // matched)
   std::vector<std::string> tokens{first, last};
 
-  for(auto i: tokens){
-    if(!i.empty()){
+  for (auto i : tokens) {
+    if (!i.empty()) {
       parts.push_back(i);
     }
   }
