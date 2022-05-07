@@ -228,10 +228,12 @@ void DataPath::test() {
   std::cout << "\n=================ARCHIVO DE "
                "REGISTROS======================================================"
                "======\n";
-  std::cout << "\n\nL1 Datos: ";
+  std::cout << "\nL1 Datos: ";
   int tam = dataMem.L1_D.size();
-  for (int i = 0; i < tam; i++)
+  for (int i = 0; i < tam; i++){
     std::cout << dataMem.L1_D[i] << " ";
+  }
+  std::cout << "\n\n";
 }
 
 DataPath::~DataPath() {}

@@ -31,7 +31,7 @@ void Register::assambly() {
   //   return;
   // }
   celdaS = tmp;
-  std::cout << "assambly: " << tmp << std::endl;
+
   wOut.write(tmp);
   // cOut.write(tmp);
 }

@@ -25,6 +25,7 @@ void ALU::operation() {
     dataB=dataB/4;
     res = dataB + dataA;
     break;
+  case ADDI:
   case ADD:
     res = dataA + dataB;
     break;

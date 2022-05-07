@@ -22,7 +22,8 @@ enum OPCODES {
   AND,
   OR,
   LW,
-  SW
+  SW,
+  ADDI
 }; // 
 
 class string { // previously as struct

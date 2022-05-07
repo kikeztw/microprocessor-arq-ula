@@ -95,7 +95,7 @@ void ControlUnit::readInstruction() {
   // Destino  2. Primer dato  3. Segundo dato
   std::vector<std::string> Dic = {"add", "sub", "beq",  "bne",  "ble",
                                   "div", "mod", "mulh", "mull", "and",
-                                  "or",  "lw",  "sw"};
+                                  "or",  "lw",  "sw","addi"};
   std::vector<std::string> parts, parts1;
   // separamos el string en 4 strings
 

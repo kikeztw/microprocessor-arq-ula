@@ -29,8 +29,7 @@ void InstructioMemory::read() {
   std::string::size_type n;
   for (auto &pair : labels) {
     n = block.find(pair.first.substr(0, pair.first.size() - 1));
-    std::cout << "\npair.first: " << pair.first.substr(0, pair.first.size() - 1)
-              << " block: " << block << "\n";
+ 
     if (n != std::string::npos) {
       block.replace(block.begin() + n, block.end(),
                     std::to_string(pair.second));
