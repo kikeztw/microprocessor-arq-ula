@@ -3,11 +3,11 @@
 .text
   main:
     lw x9, 4(0)
+    addi x7, x0, 5
     add x0, x0, 0
-    addi x7, x0, 99
     add x0, x0, 0
     add x0, x0, 0
-    addi x5, x9, 2
+    addi x9, x0, 1
     add x0, x0, 0
     add x0, x0, 0
     add x0, x0, 0
