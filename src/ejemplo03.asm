@@ -4,6 +4,7 @@
   main:
     lw x9, 4(0)
     add x0, x0, 0
+    addi x7, x0, 99
     add x0, x0, 0
     add x0, x0, 0
     addi x5, x9, 2
@@ -11,6 +12,5 @@
     add x0, x0, 0
     add x0, x0, 0
   while:
-    add x3, x3, 1
-    bne x3, x5, while
+    bne x3, x7, while
     sw x3, 4(0)

@@ -93,7 +93,7 @@ void ControlUnit::readInstruction() {
 
   // data hace referencia a 4 resultados, 0. Instruccion  1. Registro
   // Destino  2. Primer dato  3. Segundo dato
-  std::vector<std::string> Dic = {"add", "sub", "beq",  "bne",  "ble",
+  std::vector<std::string> Dic = {"add", "sub", "beq",  "bne",  "blt",
                                   "div", "mod", "mulh", "mull", "and",
                                   "or",  "lw",  "sw","addi"};
   std::vector<std::string> parts, parts1;

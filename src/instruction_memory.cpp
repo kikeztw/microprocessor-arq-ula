@@ -34,7 +34,7 @@ void InstructioMemory::read() {
       block.replace(block.begin() + n, block.end(),
                     std::to_string(pair.second));
 
-      std::cout << block << std::endl;
+      //std::cout << block << std::endl;
     }
   }
 
